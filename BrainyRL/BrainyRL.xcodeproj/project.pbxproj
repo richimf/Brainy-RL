@@ -12,6 +12,9 @@
 		468773E421A61B5300E52966 /* BrainyRL.h in Headers */ = {isa = PBXBuildFile; fileRef = 468773D621A61B5300E52966 /* BrainyRL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		468773EE21A61BA300E52966 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468773ED21A61BA300E52966 /* Brain.swift */; };
 		468773F021A61BF300E52966 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 468773EF21A61BF300E52966 /* README.md */; };
+		46F3DE1221B6F7D900C19A04 /* QLearning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1121B6F7D900C19A04 /* QLearning.swift */; };
+		46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1521B7023C00C19A04 /* Errors.swift */; };
+		46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1821B71DDE00C19A04 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,9 @@
 		468773E321A61B5300E52966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		468773ED21A61BA300E52966 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 		468773EF21A61BF300E52966 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		46F3DE1121B6F7D900C19A04 /* QLearning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLearning.swift; sourceTree = "<group>"; };
+		46F3DE1521B7023C00C19A04 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		46F3DE1821B71DDE00C19A04 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,9 @@
 				468773EF21A61BF300E52966 /* README.md */,
 				468773D621A61B5300E52966 /* BrainyRL.h */,
 				468773ED21A61BA300E52966 /* Brain.swift */,
-				468773F121A61D3800E52966 /* Algorithms */,
+				46F3DE1721B71DD400C19A04 /* Utils */,
+				46F3DE1421B7022C00C19A04 /* Errors */,
+				46F3DE1321B6F7E100C19A04 /* Algorithms */,
 				468773D721A61B5300E52966 /* Info.plist */,
 			);
 			path = BrainyRL;
@@ -93,11 +101,28 @@
 			path = BrainyRLTests;
 			sourceTree = "<group>";
 		};
-		468773F121A61D3800E52966 /* Algorithms */ = {
+		46F3DE1321B6F7E100C19A04 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				46F3DE1121B6F7D900C19A04 /* QLearning.swift */,
 			);
 			path = Algorithms;
+			sourceTree = "<group>";
+		};
+		46F3DE1421B7022C00C19A04 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				46F3DE1521B7023C00C19A04 /* Errors.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		46F3DE1721B71DD400C19A04 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				46F3DE1821B71DDE00C19A04 /* Utils.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				468773EE21A61BA300E52966 /* Brain.swift in Sources */,
+				46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */,
+				46F3DE1221B6F7D900C19A04 /* QLearning.swift in Sources */,
+				46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

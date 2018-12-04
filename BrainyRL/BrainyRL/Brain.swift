@@ -8,6 +8,13 @@
 
 import UIKit
 
-class Brain: NSObject {
+public enum Algorithm {
+  case QLearning
+}
+
+open class Brain: NSObject {
+
+  public func setupAlgorithm(type: Algorithm) {
+  }
 
 }
