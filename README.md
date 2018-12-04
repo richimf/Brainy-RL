@@ -1,7 +1,5 @@
 [![Swift Programming language](https://img.shields.io/badge/Swift-Beta-orange.svg)](http://www.oracle.com/technetwork/java/index.html "Java programming language")
-
 [![Swift Programming language](https://img.shields.io/badge/under%20construction-in%20progress-orange.svg)]()
-
 [![MIT License](https://img.shields.io/badge/license-MIT-1e90ff.svg)](MIT-LICENSE.md "MIT License")
 
 # Brainy RL
