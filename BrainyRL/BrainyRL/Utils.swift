@@ -17,13 +17,23 @@ import Foundation
  
     - axis : **int**, optional
            By default, the index is into the flattened array, otherwise along the specified axis.
- 
-    - out : **array**, optional
-            If provided, the result will be inserted into this array. It should be of the appropriate shape and dtype.
+
  
  - Returns:
     - index_array : ndarray of ints
  */
-public func argmax<T>(a:[T], axis: Int? = nil, out:[T]? = nil) -> [T] {
-  return []
+public func argmax<T>(a: [T]) -> [T] {
+  return [] //TODO: IMPLEMENT
 }
+public func argmax<T>(a: [T], at row: Int) throws -> T {
+  if row >= 0 && row < a.count {
+    //TODO: IMPLEMENT
+    return a[row]
+  } else {
+    throw RLError.outofIndex
+  }
+}
+//
+//public func argmax<T>(a:[T], axis: Int? = nil, out:[T]? = nil) -> T {
+//  return T as! T
+//}

@@ -73,5 +73,6 @@ Reinforcement Learning an Introduction, second edition, Richard A. Sutton and An
 
 [Medium - A brief introduction to reinforcement learning](https://medium.freecodecamp.org/a-brief-introduction-to-reinforcement-learning-7799af5840db)
 
+https://medium.freecodecamp.org/diving-deeper-into-reinforcement-learning-with-q-learning-c18d0db58efe
 
 
