@@ -14,8 +14,6 @@ protocol SettersProtocol {
   /// Learning Rate *alpha*
   func setAlpha(_ value: Float)
   func setEpsilon(_ value: Float)
-  func setMaximumEpsilon(_ value: Float)
-  func setMinimumEpsilon(_ value: Float)
 }
 
 protocol QtableProtocol {
@@ -26,6 +24,6 @@ protocol QtableProtocol {
   /// Clear the Q-Table
   func clearQtable()
   /// Set a value at given position into Q-Table
-  func setValueAt(column: Int, row: Int, value: Int) throws
-  func getValueAt(column: Int, row: Int) throws -> Int
+  func updateQtable(row: Int, column: Int, value: Int) throws
+  func getQTableValueAt(row: Int, column: Int) throws -> Int
 }

@@ -22,15 +22,37 @@ import Foundation
  - Returns:
     - index_array : ndarray of ints
  */
-public func argmax<T>(a: [T]) -> [T] {
-  return [] //TODO: IMPLEMENT
-}
-public func argmax<T>(a: [T], at row: Int) throws -> T {
-  if row >= 0 && row < a.count {
-    //TODO: IMPLEMENT
-    return a[row]
-  } else {
-    throw RLError.outofIndex
+public class Utils {
+ 
+  public func argmax<T: Comparable>(table: [[T]], row: Int, column: Int ) -> T {
+    print(table)
+    var map: [T] = [T]()
+    for column in 0..<5 {
+      map.append(table[row][column])
+    }
+    print(map)
+    let tableSorted = quicksort(map)
+    print(tableSorted)
+    return tableSorted[0]
+  }
+
+//  public static func argmax<T>(table: [[T]], state: Int) throws -> T {
+//    if state >= 0 && state < table.count {
+//      return table { $0 > $1 }
+//    } else {
+//      throw RLError.outofIndex
+//    }
+//  }
+  
+  private func quicksort<T: Comparable>(_ a: [T]) -> [T] {
+    guard a.count > 1 else { return a }
+    
+    let pivot = a[a.count/2]
+    let less = a.filter { $0 < pivot }
+    let equal = a.filter { $0 == pivot }
+    let greater = a.filter { $0 > pivot }
+    
+    return quicksort(less) + equal + quicksort(greater)
   }
 }
 //

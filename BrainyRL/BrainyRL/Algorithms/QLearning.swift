@@ -7,51 +7,40 @@
 //
 
 // Q-Learning Algorithm
-/***
- Example of use:
 
- Let’s say that a robot has to cross a maze and reach the end point.
- There are mines, and the robot can only move one tile at a time.
- If the robot steps onto a mine, the robot is dead.
- The robot has to reach the end point in the shortest time possible.
- But the robot loses 1 point at each step. This is done so that the robot takes the shortest path and reaches the goal as fast as possible.
- If robot steps on a mine, the point loss is 100 and the game ends.
- If the robot gets power, it gains 1 point of reward.
- If the robot reaches the end goal the robot gets 100 points.
- */
 import Foundation
 
 open class QLearning {
-  
+
   //MARK: - TypeAlias
   public typealias Qvalue = Int
   public typealias Action = Int
   public typealias NextStateAndReward = (next_state: Int, reward: Int, done: Bool, info: String)
 
-  //MARK: - Constants
-  private var kColumns: Int = 0
-  private var kRows: Int = 0
-  
   //MARK: - Parameters
+  private var kRows: Int = 0    //states
+  private var kColumns: Int = 0 //actions
+
   /// Learning Rate: alpha
   private var alpha: Float = 0.1
   /// Discount Rate: gamma
   private var discount_rate: Float = 0.01
+  private var learning_rate: Float = 0.7
+
   /// Epsilon
-  private var epsilon: Float = 0.1
-  private var max_epsilon: Float = 1.0
-  private var min_epsilon: Float = 0.01
+  private var epsilon: Float = 1.0
+  private let max_epsilon: Float = 1.0
+  private let min_epsilon: Float = 0.01
+  private let decay_rate: Float = 0.01
 
   //MARK: - Q-Table
   /// The *Q-Table* helps us to find the best action for each state.
   public var QTable = [[Int]]()
-  public var actions = [Int]()
-  public var states = [Int]()
   
-  public var environment: (Int) -> (Int)
+  public var environment: BranyEnvironment
 
   //MARK: - Initializers
-  public init(environment: @escaping (Int) -> (Int)) {
+  public init(environment: BranyEnvironment) {
     self.environment = environment
   }
 
@@ -59,35 +48,54 @@ open class QLearning {
   // We have to define when to stop training or if it is undefined amount of time.
   // We will choose an action (a) in the state (s) based on the Q-Table.
   // MARK: - Epsilon Greedy Strategy. Exploitation.
-  public func train(until: Int = 1000, train: inout ()->()) {
-    var episode: Int = 0
-    while episode < until {
-      for s in states {
-        let a = chooseAction(state: s)
-        let env = getNextStateAndReward(action: a)//environment.step(action)
-        let next_max = QTable[env.next_state] //todo, get max from qtable
-        QTable[env.next_state][a] = QTable
+  public func train(steps: Int = 1000, episodes: Int = 1000) {
+    
+    for episode in 0...episodes {
+      var state = 0
+      var step = 0
+      var done = false
+      
+      for step in 0...steps {
+        //Choose an action a in the current world state (s)
+        let action = epsilonGreedy(state: state)
+        let (next_state, reward, done, info) = getNextStateAndReward(action: action)
+        
+        //Update Q-Table
+        //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
+        let Qsa = try? Q(state, action)
+        let r = R(state, action)
+        let newValue = Qsa + learning_rate * (r + discount_rate * Utils.argmax(table: QTable, state: next_state) - Qsa)
+        self.updateQtable(row: state, column: action, value: newValue)
+        //update current state
+        state = next_state
       }
-      episode = episode + 1
     }
   }
 
-  private func chooseAction(state: Int) -> Action {
-    // pick number between 0 and actions.count - 1
-    //let number = Int(arc4random_uniform(UInt32(actions.count)))
-    //let action = actions[number]
-    //let action = argmax(QTable[state])
-    let action = QTable[state].endIndex //TODO NO ES ESTE, SOLO PARA PRUEBAS
-    return action
-  }
-
   /// Q-function returns the expected future reward of that action at that state.
-  public func Q(_ s: Int, _ a: Int) -> Qvalue {
-    let reward = R(s,a)
-    //return 0
-    // TODO: IMPLEMENT FUNCTION
-     q_table[state,action] =  q_table[state,action] + alpha * ( reward + gamma * next_max - q_table[state,action])
-    return Q(s,a) + alpha*(reward + getArgMaxwithDiscount() - Q(s,a))
+  public func Q(_ s: Int, _ a: Int) throws -> Qvalue {
+    if s <= self.kRows && a <= self.kColumns {
+      return try! self.getQTableValueAt(row: s, column: a)
+    } else {
+      throw RLError.outofIndex
+    }
+  }
+  
+  public func epsilonGreedy(state: Int) -> Action {
+    var action: Int = 0
+    let randomNumber:Float = Float(Float(arc4random()) / Float(UINT32_MAX))
+    if randomNumber > epsilon {
+      //EXPLOITATION, this means we use what we already know to select the best action at each step
+      action = try! Utils.argmax(table: QTable, state: state)
+    } else {
+      //EXPLORATION
+      action = environment.randomAaction()
+      //Reduce epsilon
+      if epsilon > min_epsilon {
+        epsilon = epsilon - decay_rate
+      }
+    }
+    return action
   }
   
   public func getNextStateAndReward(action: Int) -> NextStateAndReward {
@@ -107,8 +115,8 @@ open class QLearning {
 extension QLearning: QtableProtocol {
  
   public func initQTable() {
-    self.kColumns = self.actions.count
-    self.kRows = self.states.count
+    self.kColumns = self.environment.actions.count
+    self.kRows = self.environment.states.count
     self.QTable = Array(repeating: Array(repeating: 0, count: self.kColumns), count: self.kRows)
   }
 
@@ -116,10 +124,10 @@ extension QLearning: QtableProtocol {
     self.QTable = [[Int]]()
   }
 
-  public func setValueAt(column: Int, row: Int, value: Int) throws {
+  public func updateQtable(row: Int, column: Int, value: Int) throws {
     if self.QTable.capacity > 0 {
-      if row >= 0 && row < self.kRows && column >= 0 && column < self.kColumns {
-        self.QTable[column][row] = value
+      if column >= 0 && column < self.kColumns && row >= 0 && row < self.kRows {
+        self.QTable[row][column] = value
       } else {
         throw RLError.outofIndex
       }
@@ -128,12 +136,12 @@ extension QLearning: QtableProtocol {
     }
   }
 
-  public func getValueAt(column: Int, row: Int) throws -> Int {
+  public func getQTableValueAt(row: Int, column: Int) throws -> Int {
     if self.QTable.capacity <= 0 {
       throw RLError.qTableEmpty
     }
     if row >= 0 && row < self.kRows && column >= 0 && column < self.kColumns {
-      return self.QTable[column][row]
+      return self.QTable[row][column]
     } else {
       throw RLError.outofIndex
     }
@@ -152,14 +160,6 @@ extension QLearning: SettersProtocol {
   
   public func setEpsilon(_ value: Float) {
     self.epsilon = value
-  }
-  
-  public func setMaximumEpsilon(_ value: Float) {
-    self.max_epsilon = value
-  }
-  
-  public func setMinimumEpsilon(_ value: Float) {
-    self.min_epsilon = value
   }
 }
 

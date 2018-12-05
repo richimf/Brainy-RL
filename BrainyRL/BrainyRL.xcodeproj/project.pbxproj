@@ -16,6 +16,7 @@
 		46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1521B7023C00C19A04 /* Errors.swift */; };
 		46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1821B71DDE00C19A04 /* Utils.swift */; };
 		46F3DE1C21B72E3200C19A04 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1B21B72E3200C19A04 /* Protocols.swift */; };
+		89094C9921B79F4100B420CC /* BranyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89094C9821B79F4100B420CC /* BranyEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		46F3DE1521B7023C00C19A04 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		46F3DE1821B71DDE00C19A04 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		46F3DE1B21B72E3200C19A04 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		89094C9821B79F4100B420CC /* BranyEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranyEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				468773EF21A61BF300E52966 /* README.md */,
 				468773D621A61B5300E52966 /* BrainyRL.h */,
 				468773ED21A61BA300E52966 /* Brain.swift */,
+				89094C9821B79F4100B420CC /* BranyEnvironment.swift */,
 				46F3DE1D21B733B400C19A04 /* Protocols */,
 				46F3DE1721B71DD400C19A04 /* Utils */,
 				46F3DE1421B7022C00C19A04 /* Errors */,
@@ -250,6 +253,7 @@
 				46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */,
 				46F3DE1C21B72E3200C19A04 /* Protocols.swift in Sources */,
 				46F3DE1221B6F7D900C19A04 /* QLearning.swift in Sources */,
+				89094C9921B79F4100B420CC /* BranyEnvironment.swift in Sources */,
 				46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
