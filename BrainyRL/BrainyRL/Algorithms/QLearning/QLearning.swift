@@ -45,23 +45,20 @@ open class QLearning {
   /// We will choose an action (a) in the state (s) based on the Q-Table.
   public func train(steps: Int = 100, episodes: Int = 1000) {
 
-    for episode in 0...episodes {
+    for _ in 0...episodes {
       var state = 0
-      var step = 0
-      var done = false
       
-      for step in 0...steps {
+      for _ in 0...steps {
         //Choose an action a in the current world state (s)
         let action = epsilonGreedy(state: state)
         let (next_state, reward, done, info) = getNextStateAndReward(action: action)
 
-        //Update Q-Table
         //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
-        let Qsa = try? Q(state, action)
-        let r = R(state, action)
-        //TODO: FINISH THIS:
-        let newValue = 0 //Qsa + learning_rate * (r + getArgmaxwithDiscount(state: next_state) - Qsa)
-        try? updateQtable(row: state, column: action, value: newValue)
+        let QSA: Float = try! Float(Q(state, action))
+        let _QSA: Float = Float(reward) + getArgmaxwithDiscount(state: next_state) - QSA
+        let newValue = QSA + learning_rate * _QSA
+        try? updateQtable(row: state, column: action, value: Int(newValue))
+        
         //update current state
         state = next_state
       }
@@ -102,8 +99,7 @@ open class QLearning {
   }
   
   public func getNextStateAndReward(action: Int) -> NextStateAndReward {
-    //TODO: COMPLETE THIS
-    return (next_state: 0, reward: 0, done: true, info: "")
+    return Environment.step(action: action)
   }
 
   private func getArgmaxwithDiscount(state: Int) -> Float {
