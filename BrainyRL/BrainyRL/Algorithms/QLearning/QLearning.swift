@@ -41,10 +41,8 @@ open class QLearning {
     self.Environment = environment
   }
 
-  // MARK: - Choose and Perform an Action
-  // We have to define when to stop training or if it is undefined amount of time.
-  // We will choose an action (a) in the state (s) based on the Q-Table.
-  // MARK: - Epsilon Greedy Strategy. Exploitation.
+  /// We have to define when to stop training or if it is undefined amount of time.
+  /// We will choose an action (a) in the state (s) based on the Q-Table.
   public func train(steps: Int = 100, episodes: Int = 1000) {
 
     for episode in 0...episodes {
@@ -78,8 +76,14 @@ open class QLearning {
       throw RLError.outofIndex
     }
   }
+  
+  private func R(_ s: Int, _ a: Int) -> Int {
+    //TODO: COMPLETE THIS
+    return 0
+  }
 
   //MARK: - Strategy
+  /// Epsilon Greedy is the strategy to follow in two flavors: Exploitation and Exploration
   public func epsilonGreedy(state: Int) -> Action {
     var action: Int = 0
     let randomNumber:Float = Float(Float(arc4random()) / Float(UINT32_MAX))
@@ -106,10 +110,6 @@ open class QLearning {
     return discount_rate * Float(Utils.argmax(table: self.QTable, row: state))
   }
 
-  private func R(_ s: Int, _ a: Int) -> Int {
-    //TODO: COMPLETE THIS
-    return 0
-  }
 }
 
 // MARK: - Q-Table
