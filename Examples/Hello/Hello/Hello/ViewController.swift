@@ -11,8 +11,8 @@ import BrainyRL
 
 class ViewController: UIViewController {
   
-  let brain: Brain
-  let env: BranyEnvironment
+  let brain = Brain()
+  let env = BranyEnvironment()
 
   override func viewDidLoad() {
     super.viewDidLoad()

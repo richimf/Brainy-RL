@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SettersProtocol {
+public protocol SettersProtocol {
   /// Discount Rate *gamma*
   func setDiscountRate(_ value: Float)
   /// Learning Rate *alpha*
@@ -16,7 +16,7 @@ protocol SettersProtocol {
   func setEpsilon(_ value: Float)
 }
 
-protocol QtableProtocol {
+public protocol QtableProtocol {
   /** Once Q-Table is initialized, it is filled with Zeros.
    There are **n** columns, where **n =** number of actions.
    There are **m** rows, where **m =** number of states. */
@@ -28,6 +28,6 @@ protocol QtableProtocol {
   func getQTableValueAt(row: Int, column: Int) throws -> Int
 }
 
-protocol ObserverProtocol {
+public protocol ObserverProtocol {
   func currentValues<T: Comparable>(state: T, reward: T, action: T)
 }

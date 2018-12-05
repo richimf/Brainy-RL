@@ -34,17 +34,16 @@ open class QLearning {
   //MARK: - Q-Table and Environment
   /// The *Q-Table* helps us to find the best action for each state.
   public var QTable = [[Int]]()
-  private var Environment: BranyEnvironment
+  public var Environment: BranyEnvironment
 
   //MARK: - Initializers
-  public init(environment: BranyEnvironment) {
+  public init(_ environment: BranyEnvironment){
     self.Environment = environment
   }
 
   /// We have to define when to stop training or if it is undefined amount of time.
   /// We will choose an action (a) in the state (s) based on the Q-Table.
   public func train(steps: Int = 100, episodes: Int = 1000) {
-
     for _ in 0...episodes {
       var state = 0
       
@@ -58,7 +57,6 @@ open class QLearning {
         let _QSA: Float = Float(reward) + getArgmaxwithDiscount(state: next_state) - QSA
         let newValue = QSA + learning_rate * _QSA
         try? updateQtable(row: state, column: action, value: Int(newValue))
-        
         //update current state
         state = next_state
       }
@@ -72,11 +70,6 @@ open class QLearning {
     } else {
       throw RLError.outofIndex
     }
-  }
-  
-  private func R(_ s: Int, _ a: Int) -> Int {
-    //TODO: COMPLETE THIS
-    return 0
   }
 
   //MARK: - Strategy

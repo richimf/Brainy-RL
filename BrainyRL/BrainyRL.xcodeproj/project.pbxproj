@@ -111,8 +111,8 @@
 		46D4849C21B833A7008A979A /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				89094C9821B79F4100B420CC /* BranyEnvironment.swift */,
 				46D484A321B84F3A008A979A /* EnvironmentProtocols.swift */,
+				89094C9821B79F4100B420CC /* BranyEnvironment.swift */,
 			);
 			name = Environment;
 			sourceTree = "<group>";

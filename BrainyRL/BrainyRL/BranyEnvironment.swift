@@ -9,15 +9,15 @@
 import Foundation
 
 public enum States: Int {
-  case terminal
-  case penalty
+  case terminal = 0
+  case penalty  = -1
 }
 
 open class BranyEnvironment: EnvironmentProtocol {
 
+  public var maximum_reward: Int?
   public var actions = [Int]()
   public var states = [Int]()
-  public var maximum_reward: Int?
 
   public typealias NextStateAndReward = (next_state: Int, reward: Int, done: Bool, info: String)
 
@@ -30,7 +30,7 @@ open class BranyEnvironment: EnvironmentProtocol {
 
   /// Take cction and get next observation and Reward:
   public func step(action: Int) -> NextStateAndReward {
-    let state = states[action] // todo: VERIFY
+    let state = states[action]
     let reward = getReward(state: state)
     let isDone = state == States.terminal.rawValue
     return (next_state: state, reward: reward, done: isDone, info: "")

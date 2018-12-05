@@ -8,13 +8,24 @@
 
 import UIKit
 
-public enum Algorithm {
-  case QLearning
-}
-
 open class Brain: NSObject {
 
-  public func setupAlgorithm(type: Algorithm) {
+  private let environment = BranyEnvironment()
+  private var qLearning: QLearning?
+
+  public func setup(actions: [Int], states: [Int], maximumReward: Int){
+    environment.actions = actions
+    environment.states = states
+    environment.maximum_reward = maximumReward
+    qLearning = QLearning(environment)
+    qLearning?.initQTable()
+  }
+  
+  public func think(steps: Int = 100, episodes: Int = 1000) {
+    qLearning?.train(steps: steps, episodes: episodes)
   }
 
+  public func forget() {
+    qLearning?.clearQtable()
+  }
 }
