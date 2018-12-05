@@ -20,6 +20,14 @@ open class Brain: NSObject {
     qLearning = QLearning(environment)
     qLearning?.initQTable()
   }
+
+  public func setPenaltyStates(states: [Int]) {
+    environment.penaltyStates = states
+  }
+  
+  public func setPenaltyStates(states: [Int]) {
+    environment.terminalStates = states
+  }
   
   public func think(steps: Int = 100, episodes: Int = 1000) {
     qLearning?.train(steps: steps, episodes: episodes)

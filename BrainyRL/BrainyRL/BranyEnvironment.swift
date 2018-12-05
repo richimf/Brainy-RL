@@ -8,16 +8,13 @@
 
 import Foundation
 
-public enum States: Int {
-  case terminal = 0
-  case penalty  = -1
-}
-
 open class BranyEnvironment: EnvironmentProtocol {
 
   public var maximum_reward: Int?
   public var actions = [Int]()
   public var states = [Int]()
+  public var penaltyStates = [Int]()
+  public var terminalStates = [Int]()
 
   public typealias NextStateAndReward = (next_state: Int, reward: Int, done: Bool, info: String)
 
@@ -37,9 +34,9 @@ open class BranyEnvironment: EnvironmentProtocol {
   }
 
   public func getReward(state: Int) -> Int {
-    if state == States.terminal.rawValue {
+    if state == terminal {
       return 1
-    } else if state == States.penalty.rawValue {
+    } else if state == penalty {
       return -1
     } else {
       return 0
