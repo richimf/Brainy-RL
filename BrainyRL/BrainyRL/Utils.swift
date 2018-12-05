@@ -19,7 +19,7 @@ public class Utils {
         m = [[77,2,3],[4,5,6]]
         argmax(table: m)
   */
-  public static func argmax<T: Comparable>(table: [[T]]) -> T {
+  public class func argmax<T: Comparable>(table: [[T]]) -> T {
     var map: [T] = [T]()
     let row = table.capacity
     for r in 0..<row {
@@ -29,34 +29,26 @@ public class Utils {
       }
     }
     return getLastElementOf(table: map)
-    //    let tableSorted = quicksort(map)
-    //    let lastIndex = tableSorted.count - 1
-    //    // Returns max value of matrix
-    //    return tableSorted[lastIndex]
   }
   
-  public static func argmax<T: Comparable>(table: [[T]], row: T) -> T {
+  public class func argmax<T: Comparable>(table: [[T]], row: T) -> T {
     var map: [T] = [T]()
     let row = table.capacity
     let columns = table[row].count
     for c in 0..<columns {
       map.append(table[row][c])
     }
-    //    let tableSorted = quicksort(map)
-    //    let lastIndex = tableSorted.count - 1
-    //    // Returns max value of matrix
-    //    return tableSorted[lastIndex]
     return getLastElementOf(table: map)
   }
 
   // MARK: - PRIVATE METHODS
-  private func getLastElementOf<T: Comparable>(table: [T]) -> T{
+  private static func getLastElementOf<T: Comparable>(table: [T]) -> T{
     let tableSorted = quicksort(table)
     let lastIndex = tableSorted.count - 1
     return tableSorted[lastIndex]
   }
 
-  private func quicksort<T: Comparable>(_ a: [T]) -> [T] {
+  private static func quicksort<T: Comparable>(_ a: [T]) -> [T] {
     guard a.count > 1 else { return a }
     let pivot = a[a.count/2]
     let less = a.filter { $0 < pivot }

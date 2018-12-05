@@ -8,15 +8,17 @@
 
 import Foundation
 
-open class BranyEnvironment {
-  
+open class BranyEnvironment: EnvironmentProtocol {
+
   public var actions = [Int]()
   public var states = [Int]()
-  
+  public var maximum_reward: Int?
+
   init(){}
-  
-  public func randomAaction() -> Int {
+
+  public func getRandomAction() -> Int {
     let number = Int(arc4random_uniform(UInt32(actions.count-1)))
     return actions[number]
   }
+
 }

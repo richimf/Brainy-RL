@@ -9,7 +9,7 @@
 import Foundation
 
 enum RLError: String, Error {
-  case qTableEmpty = "Q-Table is Empty"
+  case qTableEmpty = "Q-Table is Empty."
   case outofIndex = "Index not found, verify it."
   case qtableNotInitialized = "Q-Table not initialized."
 }

@@ -6,8 +6,6 @@
 //  Copyright © 2018 CubitStudio. All rights reserved.
 //
 
-// Q-Learning Algorithm
-
 import Foundation
 
 open class QLearning {
@@ -33,23 +31,22 @@ open class QLearning {
   private let min_epsilon: Float = 0.01
   private let decay_rate: Float = 0.01
 
-  //MARK: - Q-Table
+  //MARK: - Q-Table and Environment
   /// The *Q-Table* helps us to find the best action for each state.
   public var QTable = [[Int]]()
-  
-  public var environment: BranyEnvironment
+  private var Environment: BranyEnvironment
 
   //MARK: - Initializers
   public init(environment: BranyEnvironment) {
-    self.environment = environment
+    self.Environment = environment
   }
 
   // MARK: - Choose and Perform an Action
   // We have to define when to stop training or if it is undefined amount of time.
   // We will choose an action (a) in the state (s) based on the Q-Table.
   // MARK: - Epsilon Greedy Strategy. Exploitation.
-  public func train(steps: Int = 1000, episodes: Int = 1000) {
-    
+  public func train(steps: Int = 100, episodes: Int = 1000) {
+
     for episode in 0...episodes {
       var state = 0
       var step = 0
@@ -59,13 +56,14 @@ open class QLearning {
         //Choose an action a in the current world state (s)
         let action = epsilonGreedy(state: state)
         let (next_state, reward, done, info) = getNextStateAndReward(action: action)
-        
+
         //Update Q-Table
         //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
         let Qsa = try? Q(state, action)
         let r = R(state, action)
-        let newValue = Qsa + learning_rate * (r + discount_rate * Utils.argmax(table: QTable, state: next_state) - Qsa)
-        self.updateQtable(row: state, column: action, value: newValue)
+        //TODO: FINISH THIS:
+        let newValue = 0 //Qsa + learning_rate * (r + getArgmaxwithDiscount(state: next_state) - Qsa)
+        try? updateQtable(row: state, column: action, value: newValue)
         //update current state
         state = next_state
       }
@@ -80,7 +78,8 @@ open class QLearning {
       throw RLError.outofIndex
     }
   }
-  
+
+  //MARK: - Strategy
   public func epsilonGreedy(state: Int) -> Action {
     var action: Int = 0
     let randomNumber:Float = Float(Float(arc4random()) / Float(UINT32_MAX))
@@ -89,7 +88,7 @@ open class QLearning {
       action = Utils.argmax(table: self.QTable, row: state)
     } else {
       //EXPLORATION
-      action = environment.randomAaction()
+      action = Environment.getRandomAction()
       //Reduce epsilon
       if epsilon > min_epsilon {
         epsilon = epsilon - decay_rate
@@ -103,11 +102,12 @@ open class QLearning {
     return (next_state: 0, reward: 0, done: true, info: "")
   }
 
-  private func getArgmaxwithDiscount() -> Float {
-    return 0.0 //discount_rate * argmax(a: self.QTable)
+  private func getArgmaxwithDiscount(state: Int) -> Float {
+    return discount_rate * Float(Utils.argmax(table: self.QTable, row: state))
   }
 
   private func R(_ s: Int, _ a: Int) -> Int {
+    //TODO: COMPLETE THIS
     return 0
   }
 }
@@ -116,8 +116,8 @@ open class QLearning {
 extension QLearning: QtableProtocol {
  
   public func initQTable() {
-    self.kColumns = self.environment.actions.count
-    self.kRows = self.environment.states.count
+    self.kColumns = self.Environment.actions.count
+    self.kRows = self.Environment.states.count
     self.QTable = Array(repeating: Array(repeating: 0, count: self.kColumns), count: self.kRows)
   }
 
@@ -163,4 +163,11 @@ extension QLearning: SettersProtocol {
     self.epsilon = value
   }
 }
+
+// MARK: - Observers
+// TODO: IMPLEMENT
+// extension QLearning: ObserverProtocol {}
+
+
+
 

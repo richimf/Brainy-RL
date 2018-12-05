@@ -27,3 +27,7 @@ protocol QtableProtocol {
   func updateQtable(row: Int, column: Int, value: Int) throws
   func getQTableValueAt(row: Int, column: Int) throws -> Int
 }
+
+protocol ObserverProtocol {
+  func currentValues<T: Comparable>(state: T, reward: T, action: T)
+}
