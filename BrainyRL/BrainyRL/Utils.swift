@@ -8,54 +8,60 @@
 
 import Foundation
 
-/**
- Returns the indices of the maximum values along an axis.
-
- - Parameters:
-    - a : **array_like**
-        Input array.
- 
-    - axis : **int**, optional
-           By default, the index is into the flattened array, otherwise along the specified axis.
-
- 
- - Returns:
-    - index_array : ndarray of ints
- */
 public class Utils {
  
-  public func argmax<T: Comparable>(table: [[T]], row: Int, column: Int ) -> T {
-    print(table)
+  /**
+   Get max value of a 2D-Matrix
+  - Parameters:
+      - table: A two dimensional matrix. Its elements should be of the same kind.
+
+   # How to use:
+        m = [[77,2,3],[4,5,6]]
+        argmax(table: m)
+  */
+  public static func argmax<T: Comparable>(table: [[T]]) -> T {
     var map: [T] = [T]()
-    for column in 0..<5 {
-      map.append(table[row][column])
+    let row = table.capacity
+    for r in 0..<row {
+      let columns = table[r].count
+      for c in 0..<columns {
+        map.append(table[r][c])
+      }
     }
-    print(map)
-    let tableSorted = quicksort(map)
-    print(tableSorted)
-    return tableSorted[0]
+    return getLastElementOf(table: map)
+    //    let tableSorted = quicksort(map)
+    //    let lastIndex = tableSorted.count - 1
+    //    // Returns max value of matrix
+    //    return tableSorted[lastIndex]
+  }
+  
+  public static func argmax<T: Comparable>(table: [[T]], row: T) -> T {
+    var map: [T] = [T]()
+    let row = table.capacity
+    let columns = table[row].count
+    for c in 0..<columns {
+      map.append(table[row][c])
+    }
+    //    let tableSorted = quicksort(map)
+    //    let lastIndex = tableSorted.count - 1
+    //    // Returns max value of matrix
+    //    return tableSorted[lastIndex]
+    return getLastElementOf(table: map)
   }
 
-//  public static func argmax<T>(table: [[T]], state: Int) throws -> T {
-//    if state >= 0 && state < table.count {
-//      return table { $0 > $1 }
-//    } else {
-//      throw RLError.outofIndex
-//    }
-//  }
-  
+  // MARK: - PRIVATE METHODS
+  private func getLastElementOf<T: Comparable>(table: [T]) -> T{
+    let tableSorted = quicksort(table)
+    let lastIndex = tableSorted.count - 1
+    return tableSorted[lastIndex]
+  }
+
   private func quicksort<T: Comparable>(_ a: [T]) -> [T] {
     guard a.count > 1 else { return a }
-    
     let pivot = a[a.count/2]
     let less = a.filter { $0 < pivot }
     let equal = a.filter { $0 == pivot }
     let greater = a.filter { $0 > pivot }
-    
     return quicksort(less) + equal + quicksort(greater)
   }
 }
-//
-//public func argmax<T>(a:[T], axis: Int? = nil, out:[T]? = nil) -> T {
-//  return T as! T
-//}

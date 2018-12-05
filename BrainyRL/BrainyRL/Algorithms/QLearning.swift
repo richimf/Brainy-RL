@@ -86,7 +86,7 @@ open class QLearning {
     let randomNumber:Float = Float(Float(arc4random()) / Float(UINT32_MAX))
     if randomNumber > epsilon {
       //EXPLOITATION, this means we use what we already know to select the best action at each step
-      action = try! Utils.argmax(table: QTable, state: state)
+      action = Utils.argmax(table: self.QTable, row: state)
     } else {
       //EXPLORATION
       action = environment.randomAaction()
@@ -99,6 +99,7 @@ open class QLearning {
   }
   
   public func getNextStateAndReward(action: Int) -> NextStateAndReward {
+    //TODO: COMPLETE THIS
     return (next_state: 0, reward: 0, done: true, info: "")
   }
 

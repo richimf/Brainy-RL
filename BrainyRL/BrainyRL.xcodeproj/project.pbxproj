@@ -88,7 +88,7 @@
 				468773EF21A61BF300E52966 /* README.md */,
 				468773D621A61B5300E52966 /* BrainyRL.h */,
 				468773ED21A61BA300E52966 /* Brain.swift */,
-				89094C9821B79F4100B420CC /* BranyEnvironment.swift */,
+				46D4849C21B833A7008A979A /* Environment */,
 				46F3DE1D21B733B400C19A04 /* Protocols */,
 				46F3DE1721B71DD400C19A04 /* Utils */,
 				46F3DE1421B7022C00C19A04 /* Errors */,
@@ -105,6 +105,14 @@
 				468773E321A61B5300E52966 /* Info.plist */,
 			);
 			path = BrainyRLTests;
+			sourceTree = "<group>";
+		};
+		46D4849C21B833A7008A979A /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				89094C9821B79F4100B420CC /* BranyEnvironment.swift */,
+			);
+			name = Environment;
 			sourceTree = "<group>";
 		};
 		46F3DE1321B6F7E100C19A04 /* Algorithms */ = {
