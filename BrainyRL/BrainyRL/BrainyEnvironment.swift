@@ -9,7 +9,7 @@
 import Foundation
 
 // THIS IS A MODEL OF THE ENVIRONMENT
-open class BranyEnvironment {
+open class BrainyEnvironment {
 
   public var maximum_reward: Int?
   public var action_space = [Int]()

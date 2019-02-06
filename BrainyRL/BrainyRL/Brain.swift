@@ -10,7 +10,7 @@ import UIKit
 
 open class Brain: NSObject {
 
-  private let environment = BranyEnvironment()
+  private let environment = BrainyEnvironment()
   //Algorithm
   private var qLearning: QLearning?
 

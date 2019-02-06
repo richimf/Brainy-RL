@@ -34,10 +34,10 @@ open class QLearning {
   //MARK: - Q-Table and Environment
   /// The *Q-Table* helps us to find the best action for each state.
   public var QTable = [[Int]]()
-  public var Environment: BranyEnvironment
+  public var Environment: BrainyEnvironment
 
   //MARK: - Initializers
-  public init(_ environment: BranyEnvironment){
+  public init(_ environment: BrainyEnvironment){
     self.Environment = environment
   }
 
