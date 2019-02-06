@@ -13,7 +13,7 @@ open class QLearning {
   //MARK: - TypeAlias
   public typealias Qvalue = Int
   public typealias Action = Int
-  public typealias NextStateAndReward = (next_state: Int, reward: Int, done: Bool, info: String)
+  public typealias NextStateAndReward = (next_state: Int, reward: Int, done: Bool)
 
   //MARK: - Parameters
   private var kRows: Int = 0    //states
@@ -43,22 +43,25 @@ open class QLearning {
 
   /// We have to define when to stop training or if it is undefined amount of time.
   /// We will choose an action (a) in the state (s) based on the Q-Table.
-  public func train(steps: Int = 100, episodes: Int = 1000) {
+  public func train(steps: Int, episodes: Int) {
     for _ in 0...episodes {
-      var state = 0
-      
+      var observation = 0 //Observation
+
       for _ in 0...steps {
         //Choose an action a in the current world state (s)
-        let action = epsilonGreedy(state: state)
-        let (next_state, reward, done, info) = getNextStateAndReward(action: action)
+        let action = epsilonGreedy(state: observation)
+        let (next_state, reward, done) = getNextStateAndReward(action: action)
 
         //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
-        let QSA: Float = try! Float(Q(state, action))
+        let QSA: Float = try! Float(Q(observation, action))
         let _QSA: Float = Float(reward) + getArgmaxwithDiscount(state: next_state) - QSA
         let newValue = QSA + learning_rate * _QSA
-        try? updateQtable(row: state, column: action, value: Int(newValue))
+        try? updateQtable(row: observation, column: action, value: Int(newValue))
         //update current state
-        state = next_state
+        observation = next_state
+        if done {
+          break
+        }
       }
     }
   }
@@ -76,7 +79,7 @@ open class QLearning {
   /// Epsilon Greedy is the strategy to follow in two flavors: Exploitation and Exploration
   public func epsilonGreedy(state: Int) -> Action {
     var action: Int = 0
-    let randomNumber:Float = Float(Float(arc4random()) / Float(UINT32_MAX))
+    let randomNumber: Float = Float(Float(arc4random()) / Float(UINT32_MAX))
     if randomNumber > epsilon {
       //EXPLOITATION, this means we use what we already know to select the best action at each step
       action = Utils.argmax(table: self.QTable, row: state)
@@ -105,7 +108,7 @@ open class QLearning {
 extension QLearning: QtableProtocol {
  
   public func initQTable() {
-    self.kColumns = self.Environment.actions.count
+    self.kColumns = self.Environment.action_space.count
     self.kRows = self.Environment.states.count
     self.QTable = Array(repeating: Array(repeating: 0, count: self.kColumns), count: self.kRows)
   }

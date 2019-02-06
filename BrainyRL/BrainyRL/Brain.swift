@@ -11,10 +11,12 @@ import UIKit
 open class Brain: NSObject {
 
   private let environment = BranyEnvironment()
+  //Algorithm
   private var qLearning: QLearning?
 
+  /// states, if penalty state set it with negative value, like so: -1, otherwise set it positive
   public func setup(actions: [Int], states: [Int], maximumReward: Int){
-    environment.actions = actions
+    environment.action_space = actions
     environment.states = states
     environment.maximum_reward = maximumReward
     qLearning = QLearning(environment)
@@ -22,13 +24,9 @@ open class Brain: NSObject {
   }
 
   public func setPenaltyStates(states: [Int]) {
-    environment.penaltyStates = states
+    environment.penalty_states = states
   }
-  
-  public func setPenaltyStates(states: [Int]) {
-    environment.terminalStates = states
-  }
-  
+
   public func think(steps: Int = 100, episodes: Int = 1000) {
     qLearning?.train(steps: steps, episodes: episodes)
   }

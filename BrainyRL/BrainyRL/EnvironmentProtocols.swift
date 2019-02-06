@@ -7,10 +7,3 @@
 //
 
 import Foundation
-
-public protocol EnvironmentProtocol {
-  var actions: [Int] { get set}
-  var states: [Int] { get set}
-  var maximum_reward: Int?  { get set}
-  func getRandomAction() -> Int
-}

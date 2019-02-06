@@ -30,7 +30,7 @@ public class Utils {
     }
     return getLastElementOf(table: map)
   }
-  
+
   public class func argmax<T: Comparable>(table: [[T]], row: T) -> T {
     var map: [T] = [T]()
     let row = table.capacity
