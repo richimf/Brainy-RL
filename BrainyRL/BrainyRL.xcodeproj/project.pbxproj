@@ -16,7 +16,7 @@
 		46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1521B7023C00C19A04 /* Errors.swift */; };
 		46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1821B71DDE00C19A04 /* Utils.swift */; };
 		46F3DE1C21B72E3200C19A04 /* QLearningProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1B21B72E3200C19A04 /* QLearningProtocols.swift */; };
-		89C7BB4F220BF7CC00037592 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB4E220BF7CC00037592 /* Environment.swift */; };
+		89C7BB4F220BF7CC00037592 /* BrainyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB4E220BF7CC00037592 /* BrainyEnvironment.swift */; };
 		89C7BB51220C0B7000037592 /* BrainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB50220C0B7000037592 /* BrainProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,7 @@
 		46F3DE1521B7023C00C19A04 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		46F3DE1821B71DDE00C19A04 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		46F3DE1B21B72E3200C19A04 /* QLearningProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLearningProtocols.swift; sourceTree = "<group>"; };
-		89C7BB4E220BF7CC00037592 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		89C7BB4E220BF7CC00037592 /* BrainyEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainyEnvironment.swift; sourceTree = "<group>"; };
 		89C7BB50220C0B7000037592 /* BrainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,7 +111,7 @@
 		46D4849C21B833A7008A979A /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				89C7BB4E220BF7CC00037592 /* Environment.swift */,
+				89C7BB4E220BF7CC00037592 /* BrainyEnvironment.swift */,
 			);
 			name = Environment;
 			sourceTree = "<group>";
@@ -269,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				468773EE21A61BA300E52966 /* Brainy.swift in Sources */,
-				89C7BB4F220BF7CC00037592 /* Environment.swift in Sources */,
+				89C7BB4F220BF7CC00037592 /* BrainyEnvironment.swift in Sources */,
 				89C7BB51220C0B7000037592 /* BrainProtocol.swift in Sources */,
 				46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */,
 				46F3DE1C21B72E3200C19A04 /* QLearningProtocols.swift in Sources */,

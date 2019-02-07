@@ -11,7 +11,7 @@ import Foundation
 open class Brainy: NSObject, BrainProtocol {
 
   // Brain inputs
-  open var environment: Environment?
+  open var environment: BrainyEnvironment?
   private var qLearning = QLearning()   // TODO: Cambia esto a Algoritmo, y que conforme un protocolo
 
   open func setup() throws {

@@ -10,7 +10,7 @@ import Foundation
 
 // THIS IS A MODEL OF THE ENVIRONMENT
 
-open class Environment {
+open class BrainyEnvironment {
 
   public var action_space = [Int]()
   public var states = [Int]()
