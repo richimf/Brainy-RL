@@ -49,7 +49,7 @@ class GameScene: SKScene {
   var targetLocation: CGPoint = .zero
   
   // Scene Nodes
-  var car:SKSpriteNode!
+  var agent:SKSpriteNode!
 
   override func didMove(to view: SKView) {
     loadSceneNodes()
@@ -60,10 +60,10 @@ class GameScene: SKScene {
   }
   
   func loadSceneNodes() {
-    guard let car = childNode(withName: "car") as? SKSpriteNode else {
+    guard let link = childNode(withName: "link") as? SKSpriteNode else {
       fatalError("Sprite Nodes not loaded")
     }
-    self.car = car
+    self.agent = link
     
     guard let landBackground = childNode(withName: "landBackground")
       as? SKTileMapNode else {
@@ -134,7 +134,7 @@ class GameScene: SKScene {
   
   
   override func update(_ currentTime: TimeInterval) {
-    let position = car.position
+    let position = agent.position
     let column = landBackground.tileColumnIndex(fromPosition: position)
     let row = landBackground.tileRowIndex(fromPosition: position)
     let tile = landBackground.tileDefinition(atColumn: column, row: row)
@@ -162,22 +162,22 @@ class GameScene: SKScene {
   
   override func didSimulatePhysics() {
     
-    let offset = CGPoint(x: targetLocation.x - car.position.x,
-                         y: targetLocation.y - car.position.y)
+    let offset = CGPoint(x: targetLocation.x - agent.position.x,
+                         y: targetLocation.y - agent.position.y)
     let distance = sqrt(offset.x * offset.x + offset.y * offset.y)
     let carDirection = CGPoint(x:offset.x / distance,
                                y:offset.y / distance)
     let carVelocity = CGPoint(x: carDirection.x * acceleration,
                               y: carDirection.y * acceleration)
     
-    car.physicsBody?.velocity = CGVector(dx: carVelocity.x, dy: carVelocity.y)
+    agent.physicsBody?.velocity = CGVector(dx: carVelocity.x, dy: carVelocity.y)
     
     if acceleration > 5 {
-      car.zRotation = atan2(carVelocity.y, carVelocity.x)
+      agent.zRotation = atan2(carVelocity.y, carVelocity.x)
     } 
     
     // update acceleration
-    // car speeds up to maximum
+    // agent speeds up to maximum
     // if within threshold range of the target, car begins slowing
     // if maxSpeed has reduced due to different tiles,
     // may need to decelerate slowly to the new maxSpeed
