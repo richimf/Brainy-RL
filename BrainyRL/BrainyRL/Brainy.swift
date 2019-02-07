@@ -34,6 +34,7 @@ open class Brainy: NSObject, BrainProtocol {
     qLearning.train(steps: steps, episodes: episodes, nextStateAndReward: env.nextStep)
   }
 
+  /// Brain will forget
   open func forget() {
     qLearning.clearQtable()
   }
