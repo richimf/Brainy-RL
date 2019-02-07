@@ -11,7 +11,6 @@ import Foundation
 public protocol BrainProtocol: class {
   // Set Up an Environment, it is mandatory
   var environment: BrainyEnvironment? { get set}
-  func setup() throws
   func think(steps: Int, episodes: Int) throws
   func forget()
 }
