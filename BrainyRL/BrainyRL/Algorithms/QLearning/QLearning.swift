@@ -21,6 +21,7 @@ open class QLearning {
 
   /// Learning Rate: alpha
   private var alpha: Float = 0.1
+  
   /// Discount Rate: gamma
   private var discount_rate: Float = 0.01
   private var learning_rate: Float = 0.7
@@ -31,26 +32,21 @@ open class QLearning {
   private let min_epsilon: Float = 0.01
   private let decay_rate: Float = 0.01
 
-  //MARK: - Q-Table and Environment
+  //MARK: - Q-Table
   /// The *Q-Table* helps us to find the best action for each state.
   public var QTable = [[Int]]()
-  public var Environment: BrainyEnvironment
-
-  //MARK: - Initializers
-  public init(_ environment: BrainyEnvironment){
-    self.Environment = environment
-  }
+  public var actions = [Int]()
 
   /// We have to define when to stop training or if it is undefined amount of time.
   /// We will choose an action (a) in the state (s) based on the Q-Table.
-  public func train(steps: Int, episodes: Int) {
+  public func train(steps: Int, episodes: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
     for _ in 0...episodes {
       var observation = 0 //Observation
 
       for _ in 0...steps {
         //Choose an action a in the current world state (s)
-        let action = epsilonGreedy(state: observation)
-        let (next_state, reward, done) = getNextStateAndReward(action: action)
+        let action = chooseAction(state: observation)
+        let (next_state, reward, done) = try! nextStateAndReward(action)
 
         //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
         let QSA: Float = try! Float(Q(observation, action))
@@ -77,25 +73,21 @@ open class QLearning {
 
   //MARK: - Strategy
   /// Epsilon Greedy is the strategy to follow in two flavors: Exploitation and Exploration
-  public func epsilonGreedy(state: Int) -> Action {
+  public func chooseAction(state: Int) -> Action {
     var action: Int = 0
     let randomNumber: Float = Float(Float(arc4random()) / Float(UINT32_MAX))
-    if randomNumber > epsilon {
+    if randomNumber < epsilon {
       //EXPLOITATION, this means we use what we already know to select the best action at each step
-      action = Utils.argmax(table: self.QTable, row: state)
+      action = Utils.argmax(table: QTable, row: state)
     } else {
       //EXPLORATION
-      action = Environment.getRandomAction()
+      action = actions[0] // TODO: 0 should be a random number
       //Reduce epsilon
       if epsilon > min_epsilon {
         epsilon = epsilon - decay_rate
       }
     }
     return action
-  }
-  
-  public func getNextStateAndReward(action: Int) -> NextStateAndReward {
-    return Environment.step(action: action)
   }
 
   private func getArgmaxwithDiscount(state: Int) -> Float {
@@ -107,9 +99,10 @@ open class QLearning {
 // MARK: - Q-Table
 extension QLearning: QtableProtocol {
  
-  public func initQTable() {
-    self.kColumns = self.Environment.action_space.count
-    self.kRows = self.Environment.states.count
+  /// Actions Space **actions_space** and **states_number** are provided by the **Environment**.
+  public func initQTable(actions_space: Int, states_number: Int) {
+    self.kColumns = actions_space
+    self.kRows = states_number
     self.QTable = Array(repeating: Array(repeating: 0, count: self.kColumns), count: self.kRows)
   }
 
@@ -155,11 +148,4 @@ extension QLearning: SettersProtocol {
     self.epsilon = value
   }
 }
-
-// MARK: - Observers
-// TODO: IMPLEMENT
-// extension QLearning: ObserverProtocol {}
-
-
-
 

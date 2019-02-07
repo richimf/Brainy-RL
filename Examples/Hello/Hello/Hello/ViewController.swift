@@ -10,12 +10,13 @@ import UIKit
 import BrainyRL
 
 class ViewController: UIViewController {
-  
-  let brain = Brain()
-  let env = BranyEnvironment()
+
+  let brain: Brainy = Brainy()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    brain.setup()
+    brain.environment
     // Do any additional setup after loading the view, typically from a nib.
   }
 

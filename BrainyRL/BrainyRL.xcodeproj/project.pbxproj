@@ -10,13 +10,14 @@
 		468773DD21A61B5300E52966 /* BrainyRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468773D321A61B5300E52966 /* BrainyRL.framework */; };
 		468773E221A61B5300E52966 /* BrainyRLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468773E121A61B5300E52966 /* BrainyRLTests.swift */; };
 		468773E421A61B5300E52966 /* BrainyRL.h in Headers */ = {isa = PBXBuildFile; fileRef = 468773D621A61B5300E52966 /* BrainyRL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		468773EE21A61BA300E52966 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468773ED21A61BA300E52966 /* Brain.swift */; };
+		468773EE21A61BA300E52966 /* Brainy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468773ED21A61BA300E52966 /* Brainy.swift */; };
 		468773F021A61BF300E52966 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 468773EF21A61BF300E52966 /* README.md */; };
 		46F3DE1221B6F7D900C19A04 /* QLearning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1121B6F7D900C19A04 /* QLearning.swift */; };
 		46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1521B7023C00C19A04 /* Errors.swift */; };
 		46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1821B71DDE00C19A04 /* Utils.swift */; };
 		46F3DE1C21B72E3200C19A04 /* QLearningProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1B21B72E3200C19A04 /* QLearningProtocols.swift */; };
-		89094C9921B79F4100B420CC /* BrainyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89094C9821B79F4100B420CC /* BrainyEnvironment.swift */; };
+		89C7BB4F220BF7CC00037592 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB4E220BF7CC00037592 /* Environment.swift */; };
+		89C7BB51220C0B7000037592 /* BrainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB50220C0B7000037592 /* BrainProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +37,14 @@
 		468773DC21A61B5300E52966 /* BrainyRLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainyRLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		468773E121A61B5300E52966 /* BrainyRLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainyRLTests.swift; sourceTree = "<group>"; };
 		468773E321A61B5300E52966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		468773ED21A61BA300E52966 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		468773ED21A61BA300E52966 /* Brainy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brainy.swift; sourceTree = "<group>"; };
 		468773EF21A61BF300E52966 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		46F3DE1121B6F7D900C19A04 /* QLearning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLearning.swift; sourceTree = "<group>"; };
 		46F3DE1521B7023C00C19A04 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		46F3DE1821B71DDE00C19A04 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		46F3DE1B21B72E3200C19A04 /* QLearningProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLearningProtocols.swift; sourceTree = "<group>"; };
-		89094C9821B79F4100B420CC /* BrainyEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainyEnvironment.swift; sourceTree = "<group>"; };
+		89C7BB4E220BF7CC00037592 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		89C7BB50220C0B7000037592 /* BrainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +89,7 @@
 			children = (
 				468773EF21A61BF300E52966 /* README.md */,
 				468773D621A61B5300E52966 /* BrainyRL.h */,
-				468773ED21A61BA300E52966 /* Brain.swift */,
+				89C7BB4D220BE5D400037592 /* Brain */,
 				46D4849C21B833A7008A979A /* Environment */,
 				46F3DE1721B71DD400C19A04 /* Utils */,
 				46F3DE1421B7022C00C19A04 /* Errors */,
@@ -109,7 +111,7 @@
 		46D4849C21B833A7008A979A /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				89094C9821B79F4100B420CC /* BrainyEnvironment.swift */,
+				89C7BB4E220BF7CC00037592 /* Environment.swift */,
 			);
 			name = Environment;
 			sourceTree = "<group>";
@@ -145,6 +147,15 @@
 				46F3DE1821B71DDE00C19A04 /* Utils.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		89C7BB4D220BE5D400037592 /* Brain */ = {
+			isa = PBXGroup;
+			children = (
+				468773ED21A61BA300E52966 /* Brainy.swift */,
+				89C7BB50220C0B7000037592 /* BrainProtocol.swift */,
+			);
+			name = Brain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,11 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				468773EE21A61BA300E52966 /* Brain.swift in Sources */,
+				468773EE21A61BA300E52966 /* Brainy.swift in Sources */,
+				89C7BB4F220BF7CC00037592 /* Environment.swift in Sources */,
+				89C7BB51220C0B7000037592 /* BrainProtocol.swift in Sources */,
 				46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */,
 				46F3DE1C21B72E3200C19A04 /* QLearningProtocols.swift in Sources */,
 				46F3DE1221B6F7D900C19A04 /* QLearning.swift in Sources */,
-				89094C9921B79F4100B420CC /* BrainyEnvironment.swift in Sources */,
 				46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/BrainyRL-Swift.h</key>
 		<data>
-		b0Q5xvQ1CZgRaFBZd91rvdo4hAg=
+		aOSVYr7CLv6QwOdLFVkRm4KT3ps=
 		</data>
 		<key>Headers/BrainyRL.h</key>
 		<data>
@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		8C/nY5ov/3dGvjidFzKPOREey2k=
+		ppoJdL94gTdu/BZATsP3rMWgUrk=
 		</data>
 		<key>Modules/BrainyRL.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		SOXNsgvwu74flXYAauPqzpYDvbI=
+		I7qyS2UQt/dLAwRJwj5mSy+bSpk=
 		</data>
 		<key>Modules/BrainyRL.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		pnXydQkDqYWUCDFE6U/4fxvkc/o=
+		TxJakwJ+nIlUiygcy6Uv6qi5QoI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,7 +39,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xicNNOi4akZzovP5BJcC/AvIgwpXG6fcv6O+Rk+wxWA=
+			skASICgq795Y5WgiXrR9h4vnwA7rySgTeak7ak1w6UU=
 			</data>
 		</dict>
 		<key>Headers/BrainyRL.h</key>
@@ -53,14 +53,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EXNl3GKfwiz+ePAt8zPX/HlbT6CzfHpN5ie00g9B/Bo=
+			Mxjsxdf/90gzaw6M4XyT4Gft4/vwx0B9iGfeaud7uP4=
 			</data>
 		</dict>
 		<key>Modules/BrainyRL.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F+ySjL8kRMZX3hWqwnvQutWRKUKYg0UX9F5y1ni7fgY=
+			3C/uw5wqKjq3WJJzr/R0aQFsEGy+344Xi9ShST1HhUk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -80,7 +80,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -111,24 +111,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -164,13 +152,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>

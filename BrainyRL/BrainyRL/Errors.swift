@@ -12,4 +12,6 @@ enum RLError: String, Error {
   case qTableEmpty = "Q-Table is Empty."
   case outofIndex = "Index not found, verify it."
   case qtableNotInitialized = "Q-Table not initialized."
+  case noEnvironment = "No Environment has been set up"
+  case functionsNotInitialized = "Functions Not Initialized by Agent."
 }
