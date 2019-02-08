@@ -31,7 +31,10 @@ open class Brainy: NSObject, BrainProtocol {
     guard let env = self.environment else { throw RLError.noEnvironment }
     qLearning.initQTable(actions_space: env.action_space.count, states_number: env.states.count)
     qLearning.actions = env.action_space
-    qLearning.train(steps: steps, episodes: episodes, nextStateAndReward: env.nextStep)
+    qLearning.train(steps: steps,
+                    episodes: episodes,
+                    terminalState: env.terminalState,
+                    nextStateAndReward: env.nextStep)
   }
 
   /// Brain will forget

@@ -23,24 +23,25 @@ open class QLearning {
   private var alpha: Float = 0.1
   
   /// Discount Rate: gamma
-  private var discount_rate: Float = 0.01
-  private var learning_rate: Float = 0.7
+  private var discount_rate: Float = 0.01 //this
+  private var learning_rate: Float = 0.7 //this
 
   /// Epsilon
-  private var epsilon: Float = 1.0
+  private var epsilon: Float = 1.0 //this
   private let max_epsilon: Float = 1.0
   private let min_epsilon: Float = 0.01
   private let decay_rate: Float = 0.01
 
   //MARK: - Q-Table
   /// The *Q-Table* helps us to find the best action for each state.
-  public var QTable = [[Int]]()
-  public var actions = [Int]()
+  public var QTable = [[Int]]() //this
+  public var actions = [Int]() //this
 
   /// We have to define when to stop training or if it is undefined amount of time.
   /// We will choose an action (a) in the state (s) based on the Q-Table.
-  public func train(steps: Int, episodes: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
+  public func train(steps: Int, episodes: Int, terminalState: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
     for _ in 0...episodes {
+
       var observation = 0 //Observation
 
       for _ in 0...steps {
@@ -48,11 +49,27 @@ open class QLearning {
         let action = chooseAction(state: observation)
         let (next_state, reward, done) = try! nextStateAndReward(action)
 
+        //LEARN
         //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
-        let QSA: Float = try! Float(Q(observation, action))
-        let _QSA: Float = Float(reward) + getArgmaxwithDiscount(state: next_state) - QSA
-        let newValue = QSA + learning_rate * _QSA
+        let q_predict: Float = try! Float(Q(observation, action)) //QSA
+        var q_target: Float = 0.0
+        let R = Float(reward)
+
+        if next_state != terminalState {
+          //q_target = r + gamma*max_a[Q(S',a)]
+          //q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
+          q_target = R + discount_rate * getArgmaxwithDiscount(state: next_state)
+
+        } else {
+          q_target = R
+          // Q(S,A) <- Q(S,A) + alfa[r + gamma*max_aQ(S',a) - Q(S,A)]
+          // Q(S,A) <- Q(S,A) + alfa[q_target - Q(S,A)]  # alfa is the learning rate: "self.lr"
+          // Q(S,A) <- Q(S,A) + self.lr * (q_target - q_predict)
+        }
+        let _QSA: Float = alpha*(q_target - q_predict)
+        let newValue = q_predict + learning_rate * _QSA
         try? updateQtable(row: observation, column: action, value: Int(newValue))
+
         //update current state
         observation = next_state
         if done {
@@ -78,7 +95,7 @@ open class QLearning {
     let randomNumber: Float = Float(Float(arc4random()) / Float(UINT32_MAX))
     if randomNumber < epsilon {
       //EXPLOITATION, this means we use what we already know to select the best action at each step
-      action = Utils.argmax(table: QTable, row: state)
+      action = Utils.argmax(table: QTable, row: state) //Duda
     } else {
       //EXPLORATION
       action = actions[0] // TODO: 0 should be a random number

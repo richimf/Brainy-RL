@@ -14,6 +14,7 @@ open class BrainyEnvironment {
 
   public var action_space = [Int]()
   public var states = [Int]()
+  public var terminalState: Int
 
   //Functions given by the Agent
   public var whereToMove: Any = ()
@@ -25,9 +26,10 @@ open class BrainyEnvironment {
   public typealias GetReward = (_ state: Int) -> Int
   public typealias IsTerminalState = (_ state: Int) -> Bool
 
-  init(actionSpace: [Int], states: [Int]) {
+  init(actionSpace: [Int], states: [Int], terminalState: Int) {
     self.action_space = actionSpace
     self.states = states
+    self.terminalState = terminalState
   }
 
 //  public func getRandomAction() -> Int {
