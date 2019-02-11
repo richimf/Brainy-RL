@@ -1,0 +1,11 @@
+framework module BrainyRL {
+  umbrella header "BrainyRL.h"
+
+  export *
+  module * { export * }
+}
+
+module BrainyRL.Swift {
+    header "BrainyRL-Swift.h"
+    requires objc
+}

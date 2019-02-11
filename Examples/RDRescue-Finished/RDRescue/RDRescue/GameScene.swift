@@ -25,11 +25,11 @@ import GameplayKit
 
 class GameScene: SKScene {
   
-  lazy var duckSound:SKAction = {
-    return SKAction.playSoundFileNamed("Duck.wav", waitForCompletion: false)
+  lazy var rupeeSound:SKAction = {
+    return SKAction.playSoundFileNamed("rupee.wav", waitForCompletion: false)
   }()
-  lazy var gascanSound:SKAction = {
-    return SKAction.playSoundFileNamed("Gas.wav", waitForCompletion: false)
+  lazy var hurtSound:SKAction = {
+    return SKAction.playSoundFileNamed("hurt.wav", waitForCompletion: false)
   }()
   
   var landBackground:SKTileMapNode!
@@ -150,12 +150,12 @@ class GameScene: SKScene {
     let objectTile = objectsTileMap.tileDefinition(atColumn: column, row: row)
     
     if let _ = objectTile?.userData?.value(forKey: "gascan") {
-      run(gascanSound)
+      run(rupeeSound)
       objectsTileMap.setTileGroup(nil, forColumn: column, row: row)
     }
     
     if let _ = objectTile?.userData?.value(forKey: "duck") {
-      run(duckSound)
+      run(hurtSound)
       objectsTileMap.setTileGroup(nil, forColumn: column, row: row)
     }
   }
