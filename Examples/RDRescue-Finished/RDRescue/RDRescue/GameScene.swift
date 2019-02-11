@@ -172,9 +172,9 @@ class GameScene: SKScene {
     
     agent.physicsBody?.velocity = CGVector(dx: carVelocity.x, dy: carVelocity.y)
     
-    if acceleration > 5 {
-      agent.zRotation = atan2(carVelocity.y, carVelocity.x)
-    } 
+//    if acceleration > 5 {
+//      agent.zRotation = atan2(carVelocity.y, carVelocity.x)
+//    } 
     
     // update acceleration
     // agent speeds up to maximum
