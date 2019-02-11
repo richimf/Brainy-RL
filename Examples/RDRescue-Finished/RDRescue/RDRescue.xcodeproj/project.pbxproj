@@ -21,6 +21,7 @@
 		897BF40922110F580035BCEC /* BrainyRL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 897BF40722110F580035BCEC /* BrainyRL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		897BF40B221110F90035BCEC /* rupee.wav in Resources */ = {isa = PBXBuildFile; fileRef = 897BF40A221110F90035BCEC /* rupee.wav */; };
 		897BF40D221111040035BCEC /* hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 897BF40C221111040035BCEC /* hurt.wav */; };
+		89F44D522211429B00DD72F2 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F44D512211429B00DD72F2 /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		897BF40722110F580035BCEC /* BrainyRL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BrainyRL.framework; sourceTree = "<group>"; };
 		897BF40A221110F90035BCEC /* rupee.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rupee.wav; sourceTree = "<group>"; };
 		897BF40C221111040035BCEC /* hurt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hurt.wav; sourceTree = "<group>"; };
+		89F44D512211429B00DD72F2 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				822F87181D156DCC00601A40 /* GameViewController.swift */,
 				822F87121D156DCC00601A40 /* GameScene.sks */,
 				822F87161D156DCC00601A40 /* GameScene.swift */,
+				89F44D512211429B00DD72F2 /* Button.swift */,
 				8229979E1D989D0B0087995B /* ObjectTiles.sks */,
 				8279E65A1D165CE500D08CAF /* Assets.xcassets */,
 				8229979C1D98985F0087995B /* Tiles.sks */,
@@ -203,6 +206,7 @@
 				822F87171D156DCC00601A40 /* GameScene.swift in Sources */,
 				822F87191D156DCC00601A40 /* GameViewController.swift in Sources */,
 				822F87111D156DCC00601A40 /* AppDelegate.swift in Sources */,
+				89F44D522211429B00DD72F2 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ public class Utils {
         m = [[77,2,3],[4,5,6]]
         argmax(table: m)
   */
-  public class func argmax<T: Comparable>(table: [[T]]) -> T {
+  public class func argmax<T: Comparable>(table: [[T]]) -> T? {
     var map: [T] = [T]()
     let row = table.capacity
     for r in 0..<row {
@@ -31,19 +31,24 @@ public class Utils {
     return getLastElementOf(table: map)
   }
 
-  public class func argmax<T: Comparable>(table: [[T]], row: T) -> T {
+  public class func argmax<T: Comparable>(table: [[T]], row: T) -> T? {
     var map: [T] = [T]()
-    let row = table.capacity
-    let columns = table[row].count
-    for c in 0..<columns {
-      map.append(table[row][c])
+    let row: Int = row as! Int
+    if row < table.count {
+      let columns = table[row].count
+      for c in 0..<columns {
+        map.append(table[row][c])
+      }
     }
     return getLastElementOf(table: map)
   }
 
   // MARK: - PRIVATE METHODS
-  private static func getLastElementOf<T: Comparable>(table: [T]) -> T{
+  private static func getLastElementOf<T: Comparable>(table: [T]) -> T?{
     let tableSorted = quicksort(table)
+    if tableSorted.isEmpty {
+      return nil
+    }
     let lastIndex = tableSorted.count - 1
     return tableSorted[lastIndex]
   }

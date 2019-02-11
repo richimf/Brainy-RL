@@ -12,9 +12,9 @@ import Foundation
 
 open class BrainyEnvironment {
 
+  public var numberOfStates: Int = 0
   public var action_space = [Int]()
-  public var states = [Int]()
-  public var terminalState: Int
+  public var terminalState: Int = 0
 
   //Functions given by the Agent
   public var whereToMove: Any = ()
@@ -26,10 +26,23 @@ open class BrainyEnvironment {
   public typealias GetReward = (_ state: Int) -> Int
   public typealias IsTerminalState = (_ state: Int) -> Bool
 
-  init(actionSpace: [Int], states: [Int], terminalState: Int) {
-    self.action_space = actionSpace
-    self.states = states
+  init(numberOfStates: Int, action_space: [Int], terminalState: Int) {
+    self.numberOfStates = numberOfStates
+    self.action_space = action_space
     self.terminalState = terminalState
+  }
+  
+  public func setupFuctions(whereToMove: @escaping (_ action: Int) -> Int,
+                            getReward:  @escaping (_ state: Int) -> Int,
+                            isTerminalState:  @escaping (_ state: Int) -> Bool) throws {
+    guard let _whereToMove = whereToMove as? WhereToMove,
+      let _getReward = getReward as? GetReward,
+      let _isTerminalState = isTerminalState as? IsTerminalState else {
+        throw RLError.functionsNotInitialized
+    }
+    self.whereToMove = _whereToMove
+    self.getReward = _getReward
+    self.isTerminalState = _isTerminalState
   }
 
 //  public func getRandomAction() -> Int {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "QLearning.getQTableValueAt(row:column:):QLearning.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.QTable[row][column]">
+            </PersistentString>
+            <PersistentString
+               value = "QTable[0].count">
+            </PersistentString>
+            <PersistentString
+               value = "self.kRows">
+            </PersistentString>
+            <PersistentString
+               value = "self.kColumns">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static Utils.getLastElementOf&lt;A&gt;(table:):Utils.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.brainSetup():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "actions_space">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

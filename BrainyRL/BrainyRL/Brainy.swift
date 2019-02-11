@@ -11,9 +11,25 @@ import Foundation
 open class Brainy: NSObject, BrainProtocol {
 
   // Brain inputs
-  open var environment: BrainyEnvironment?
+  private var environment: BrainyEnvironment?
   private var qLearning = QLearning()   // TODO: Cambia esto a Algoritmo, y que conforme un protocolo
 
+  open func setupEnvironment(numberOfStates: Int, action_space: [Int], terminalState: Int) {
+    self.environment = BrainyEnvironment(numberOfStates: numberOfStates,
+                                         action_space: action_space,
+                                         terminalState: terminalState)
+  }
+  
+  open func setupEnvironmentActions(whereToMove: @escaping (_ action: Int) -> Int,
+                                    getReward: @escaping(_ state: Int) -> Int,
+                                    isTerminalState: @escaping(_ state: Int) -> Bool) throws {
+
+    guard let env = self.environment else { throw RLError.noEnvironment }
+    env.whereToMove = whereToMove
+    env.getReward = getReward
+    env.isTerminalState = isTerminalState
+  }
+  
   /**
    This function enables the Agent to think.
    How to: Once Brainy is initialized, and an Environment is setup, use it.
@@ -29,12 +45,17 @@ open class Brainy: NSObject, BrainProtocol {
    */
   open func think(steps: Int = 100, episodes: Int = 1000) throws {
     guard let env = self.environment else { throw RLError.noEnvironment }
-    qLearning.initQTable(actions_space: env.action_space.count, states_number: env.states.count)
-    qLearning.actions = env.action_space
-    qLearning.train(steps: steps,
-                    episodes: episodes,
-                    terminalState: env.terminalState,
+    qLearning.initQTable(actions_space: env.action_space, states_number: env.numberOfStates)
+//    qLearning.train(steps: steps,
+//                    episodes: episodes,
+//                    terminalState: env.terminalState,
+//                    nextStateAndReward: env.nextStep)
+    qLearning.train(terminalState: env.terminalState,
                     nextStateAndReward: env.nextStep)
+  }
+  
+  open func updateQtable(row: Int, column: Int, value: Int) throws {
+   try? qLearning.updateQtable(row: row, column: column, value: value)
   }
 
   /// Brain will forget

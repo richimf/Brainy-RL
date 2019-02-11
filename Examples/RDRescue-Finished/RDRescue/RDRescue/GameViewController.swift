@@ -23,32 +23,21 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-import BrainyRL
 
 class GameViewController: UIViewController {
 
-  let brain: Brainy = Brainy()
-
+ 
   override func viewDidLoad() {
     super.viewDidLoad()
     if let view = self.view as! SKView? {
       if let scene = SKScene(fileNamed: "GameScene") {
         scene.scaleMode = .aspectFill
-        
         view.presentScene(scene)
       }
-      
       view.ignoresSiblingOrder = true
-      
       view.showsFPS = true
       view.showsNodeCount = true
     }
-  }
-  
-  func brainSetup() {
-   // brain.setupEnvironment(actionSpace: <#T##[Int]#>, states: <#T##[Int]#>, terminalState: <#T##Int#>)
-   // brain.setupEnvironmentActions(whereToMove: <#T##(Int) -> Int#>, getReward: <#T##(Int) -> Int#>, isTerminalState: <#T##(Int) -> Bool#>)
-    //brain.think()
   }
   
   override var shouldAutorotate: Bool {
