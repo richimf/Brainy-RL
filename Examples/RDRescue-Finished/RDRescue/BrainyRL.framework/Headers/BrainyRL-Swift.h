@@ -187,6 +187,13 @@ SWIFT_CLASS("_TtC8BrainyRL6Brainy")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC8BrainyRL5State")
+@interface State : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif

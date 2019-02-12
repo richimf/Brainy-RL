@@ -32,56 +32,78 @@ enum Actions: Int {
   case right
 }
 
+struct State {
+  public let stateId: Int
+  public let position: CGPoint
+  init(stateId: Int, position: CGPoint) {
+    self.stateId = stateId
+    self.position = position
+  }
+}
+
 class GameScene: SKScene {
 
+  typealias NextState = Int
   // BRAIN
   let brain: Brainy = Brainy()
   var lastPosition: CGPoint = CGPoint.zero
+  let terminal_state: Int = 600
+  //let step: CGFloat = 100.0
   
-  let actions_space: [Int] = [Actions.stand.rawValue, Actions.up.rawValue, Actions.down.rawValue, Actions.left.rawValue, Actions.right.rawValue]
+  var x_window: CGFloat = 0.0
+  var y_window: CGFloat = 0.0
+  
+  //State = 0 is position = 0
+  var states: [CGPoint] = []
+  //var states: [State] = []
 
-  lazy var rupeeSound:SKAction = {
+  // Scene Nodes
+  var agent: SKSpriteNode!
+  
+  let columns = 32
+  let rows = 24
+  
+  // ACTIONS SPACE
+  let actions_space: [Int] = [Actions.stand.rawValue,
+                              Actions.up.rawValue,
+                              Actions.down.rawValue,
+                              Actions.left.rawValue,
+                              Actions.right.rawValue]
+
+  lazy var rupeeSound: SKAction = {
     return SKAction.playSoundFileNamed("rupee.wav", waitForCompletion: false)
   }()
-  lazy var hurtSound:SKAction = {
+  lazy var hurtSound: SKAction = {
     return SKAction.playSoundFileNamed("hurt.wav", waitForCompletion: false)
   }()
 
-  var landBackground:SKTileMapNode!
-  var objectsTileMap:SKTileMapNode!
+  var landBackground: SKTileMapNode!
+  var objectsTileMap: SKTileMapNode!
   var states_map: SKTileMapNode!
 
   // constants
-  let waterMaxSpeed: CGFloat = 2000
+  let waterMaxSpeed: CGFloat = 3000
   let landMaxSpeed: CGFloat = 4000
 
   // if within threshold range of the target, car begins slowing
-  let targetThreshold:CGFloat = 200
+  let targetThreshold:CGFloat = 2000
 
   var maxSpeed: CGFloat = 0
   var acceleration: CGFloat = 0
   
   // touch location
   var targetLocation: CGPoint = .zero
-  
-  // Scene Nodes
-  var agent: SKSpriteNode!
 
   override func didMove(to view: SKView) {
     loadSceneNodes()
     physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
     maxSpeed = landMaxSpeed
-
     setupObjects()
 //    let playButton = Button(defaultButtonImage: "Think", activeButtonImage: "START", buttonAction: loadGameScene)
 //    playButton.position = CGPoint(x: 10, y: 10)
 //    addChild(playButton)
   }
-  
-  func loadGameScene() {
-    try! brain.think()
-  }
-  
+
   func loadSceneNodes() {
     guard let link = childNode(withName: "link") as? SKSpriteNode else {
       fatalError("Sprite Nodes not loaded")
@@ -96,9 +118,7 @@ class GameScene: SKScene {
   }
 
   func setupObjects() {
-    let columns = 32
-    let rows = 24
-    let size = CGSize(width: 64, height: 64)
+    let size = CGSize(width: 44, height: 44)
     //self.QTable = Array(repeating: Array(repeating: 0, count: self.kColumns), count: self.kRows)
 
     // 1
@@ -125,11 +145,11 @@ class GameScene: SKScene {
     guard let gascanTile = tileGroups.first(where: {$0.name == "Gas Can"}) else {
       fatalError("No Gas Can tile definition found")
     }
-    guard let emptyTile = tileGroups.first(where: {$0.name == "emptyTile"}) else {
-      fatalError("No Duck tile definition found")
-    }
+//    guard let emptyTile = tileGroups.first(where: {$0.name == "emptyTile"}) else {
+//      fatalError("No Duck tile definition found")
+//    }
     
-    // 6
+    // 6, NUMBER OF RUPEES AND DOCKS
     let numberOfObjects = 64
     
     // 7
@@ -148,35 +168,39 @@ class GameScene: SKScene {
       objectsTileMap.setTileGroup(tile, forColumn: column, row: row)
     }
     
-    //Generate States
-    states_map = SKTileMapNode(tileSet: tileSet,
-                                   columns: columns,
-                                   rows: rows,
-                                   tileSize: size)
-    addChild(states_map)
-    var state_name: Int = 0
-    for row in 0..<states_map.numberOfRows {
-      for column in 0..<states_map.numberOfColumns {
-        emptyTile.name = "\(state_name)"
-        //states_map.tileDefinition(atColumn: column, row: row)
-        states_map.setTileGroup(emptyTile, forColumn: column, row: row)
-       // try! brain.updateQtable(row: row, column: column, value: state_name)
+//    //Generate States
+//    states_map = SKTileMapNode(tileSet: tileSet,
+//                                   columns: columns,
+//                                   rows: rows,
+//                                   tileSize: size)
+//    addChild(states_map)
+//    var state_name: Int = 0
+//    for row in 0..<states_map.numberOfRows {
+//      for column in 0..<states_map.numberOfColumns {
+//        emptyTile.name = "\(state_name)"
+//        //states_map.tileDefinition(atColumn: column, row: row)
 //        states_map.setTileGroup(emptyTile, forColumn: column, row: row)
-        state_name = state_name + 1
-      }
-    }
+//       // try! brain.updateQtable(row: row, column: column, value: state_name)
+////        states_map.setTileGroup(emptyTile, forColumn: column, row: row)
+//        state_name = state_name + 1
+//      }
+//    }
 
      brainSetup()
   }
-  
+
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard let touch = touches.first else { return }
-    targetLocation = touch.location(in: self)
+    //targetLocation = touch.location(in: self)
+    targetLocation = CGPoint.zero
+    agent.position = CGPoint.zero
   }
 
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard let touch = touches.first else { return }
-    targetLocation = touch.location(in: self)
+    //targetLocation = touch.location(in: self)
+    targetLocation = CGPoint.zero
+    agent.position = CGPoint.zero
   }
   
   override func update(_ currentTime: TimeInterval) {
@@ -187,12 +211,12 @@ class GameScene: SKScene {
 
     if tile == nil {
       maxSpeed = waterMaxSpeed
-      print("water")
+      //print("water")
     } else {
       maxSpeed = landMaxSpeed
-      print("grass")
+      //print("grass")
     }
-    
+
     let objectTile = objectsTileMap.tileDefinition(atColumn: column, row: row)
     
     if let _ = objectTile?.userData?.value(forKey: "gascan") {
@@ -205,7 +229,7 @@ class GameScene: SKScene {
       objectsTileMap.setTileGroup(nil, forColumn: column, row: row)
     }
     
-     try! brain.think()
+    try! brain.think()
   }
   
   override func didSimulatePhysics() {
@@ -250,64 +274,78 @@ class GameScene: SKScene {
   // MARK: BRAINY
   func brainSetup() {
     //update targetLocation
-    let states: Int = objectsTileMap.numberOfRows * objectsTileMap.numberOfRows
-    brain.setupEnvironment(numberOfStates: states,
+    let numberOfRows = objectsTileMap.numberOfRows
+    let numberOfColumns = objectsTileMap.numberOfColumns
+    let states_number: Int = numberOfRows * numberOfColumns
+    
+    createStatesMap(rows: numberOfRows, columns: numberOfColumns)
+    
+    brain.setupEnvironment(numberOfStates: states_number,
                            action_space: actions_space,
-                           terminalState: -1)
+                           terminalState: terminal_state)
     try! brain.setupEnvironmentActions(whereToMove: whereToMove, getReward: getReward, isTerminalState: isTerminalState)
   }
+  
+  private func createStatesMap(rows: Int, columns: Int) {
+    let height = objectsTileMap.mapSize.height
+    let width = objectsTileMap.mapSize.width
+    //this is the size of square
+    x_window = height/CGFloat(rows)
+    y_window = width/CGFloat(columns)
+    
+    var x: CGFloat = 0.0
+    var y: CGFloat = 0.0
+    var stateId: Int = 0
 
-  //this function gives you the "nextState"
-  private func whereToMove(_ action: Int) -> Int {
-    print("action \(action)")
-    let position = agent.position
-    var column = landBackground.tileColumnIndex(fromPosition: position)
-    var row = landBackground.tileRowIndex(fromPosition: position)
- 
+    repeat {
+      x = x + x_window
+      if x >= height {
+        y = y + y_window
+        x = 0
+      }
+      stateId = stateId + 1
+      let point = CGPoint(x: x, y: y)
+      //let s: State = State(stateId: stateId, position: point)
+      states.append(point)
+    } while(y < width)
+    
+  }
+
+  //this function gives you the "nextState" next_state
+  private func whereToMove(_ action: Int) -> NextState {
+    let position: CGPoint = agent.position
+    var newPosition: CGPoint = .zero
+    //var column = landBackground.tileColumnIndex(fromPosition: position)
+    //var row = landBackground.tileRowIndex(fromPosition: position)
+    //action
+    
     if action == Actions.up.rawValue {
-      if row > 0 {
-        row = row - 1
-      } else {
-        row = 0
-      }
+      print("up")
+      newPosition = CGPoint(x: position.x, y: position.y + y_window)
+    }else if action == Actions.down.rawValue {
+       print("down")
+      newPosition = CGPoint(x: position.x, y: position.y - y_window)
+    } else if action == Actions.left.rawValue {
+       print("left")
+      newPosition = CGPoint(x: position.x - x_window, y: position.y)
+    } else if action == Actions.right.rawValue {
+       print("right")
+      newPosition = CGPoint(x: position.x + x_window, y: position.y)
+    } else {
+      newPosition = position
     }
-    if action == Actions.down.rawValue {
-      row = row + 1
-    }
-    if action == Actions.left.rawValue {
-      if column > 0 {
-        column = column - 1
-      } else {
-        column = 0
-      }
-    }
-    if action == Actions.left.rawValue {
-      column = column + 1
-    }
-    print("Moving to: \(action)")
-    print("column: \(column)")
-    print("row: \(row)")
-
-    let destination = landBackground.centerOfTile(atColumn: column, row: row)
-    let tile = states_map.tileGroup(atColumn: column, row: row)
-    
-    //let state_name = states_map.tileDefinition(atColumn: column, row: row)
-    
-    let state_name:Int = Int(tile?.name ?? "0") ?? 0
-    print("\n state_name: \(state_name)")
-
-    
-    let action = SKAction.move(to: destination, duration: 0.1)
-    print("\n Agent position: \(agent.position)")
-    if lastPosition != agent.position {
-     // agent.run(action)
-    }
-    lastPosition = agent.position
+    let action = SKAction.move(to: newPosition, duration: 0.1)
     agent.run(action)
-    //targetLocation = lastPosition
+    targetLocation = newPosition
     
-    print("\n nextState: \(state_name)")
-    return state_name
+    let filtered_states = states.indices.filter {states[$0] == newPosition}
+    if filtered_states.count > 0 {
+      print("Next state \(filtered_states[0])")
+      return filtered_states[0] //next state
+    }
+//    print("Agent position \(position)")
+//    print("Next state \(next_state)")
+    return 0
   }
 
   private func getReward(_ state: Int) -> Int {
@@ -323,16 +361,12 @@ class GameScene: SKScene {
     if let _ = objectTile?.userData?.value(forKey: "gascan") {
        reward = 1
     }
+    print("Reward \(reward)")
     return reward
   }
 
-//  func mapStatePosition(state: Int) -> CGPoint {
-//
-//  }
-  
-  
   private func isTerminalState(_ state: Int) -> Bool {
-    return false
+    return state == terminal_state
   }
 
 }

@@ -16,6 +16,7 @@
 		46F3DE1621B7023C00C19A04 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1521B7023C00C19A04 /* Errors.swift */; };
 		46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1821B71DDE00C19A04 /* Utils.swift */; };
 		46F3DE1C21B72E3200C19A04 /* QLearningProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3DE1B21B72E3200C19A04 /* QLearningProtocols.swift */; };
+		89A3D3CE22127AE100C474F3 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A3D3CD22127AE100C474F3 /* State.swift */; };
 		89C7BB4F220BF7CC00037592 /* BrainyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB4E220BF7CC00037592 /* BrainyEnvironment.swift */; };
 		89C7BB51220C0B7000037592 /* BrainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB50220C0B7000037592 /* BrainProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		46F3DE1521B7023C00C19A04 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		46F3DE1821B71DDE00C19A04 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		46F3DE1B21B72E3200C19A04 /* QLearningProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLearningProtocols.swift; sourceTree = "<group>"; };
+		89A3D3CD22127AE100C474F3 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		89C7BB4E220BF7CC00037592 /* BrainyEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainyEnvironment.swift; sourceTree = "<group>"; };
 		89C7BB50220C0B7000037592 /* BrainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 				468773EF21A61BF300E52966 /* README.md */,
 				468773D621A61B5300E52966 /* BrainyRL.h */,
 				89C7BB4D220BE5D400037592 /* Brain */,
+				89A3D3CF22127AE400C474F3 /* Structs */,
 				46D4849C21B833A7008A979A /* Environment */,
 				46F3DE1721B71DD400C19A04 /* Utils */,
 				46F3DE1421B7022C00C19A04 /* Errors */,
@@ -147,6 +150,14 @@
 				46F3DE1821B71DDE00C19A04 /* Utils.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		89A3D3CF22127AE400C474F3 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				89A3D3CD22127AE100C474F3 /* State.swift */,
+			);
+			name = Structs;
 			sourceTree = "<group>";
 		};
 		89C7BB4D220BE5D400037592 /* Brain */ = {
@@ -275,6 +286,7 @@
 				46F3DE1C21B72E3200C19A04 /* QLearningProtocols.swift in Sources */,
 				46F3DE1221B6F7D900C19A04 /* QLearning.swift in Sources */,
 				46F3DE1921B71DDE00C19A04 /* Utils.swift in Sources */,
+				89A3D3CE22127AE100C474F3 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

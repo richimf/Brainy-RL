@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/BrainyRL-Swift.h</key>
 		<data>
-		aOSVYr7CLv6QwOdLFVkRm4KT3ps=
+		W6n2y28dK8l8agjMN14THGjIiL4=
 		</data>
 		<key>Headers/BrainyRL.h</key>
 		<data>
@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/BrainyRL.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		83nui0yMG05i1ZQkGlVytVTK+0U=
+		o/7uaf3nLYYnttIE0tzI5ANRV8c=
 		</data>
 		<key>Modules/BrainyRL.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		L9EJhDBkFI10/erVMA//GuL0RC0=
+		oxxy1VMymLWH7DWvYqwlgZAbb8A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,7 +39,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			skASICgq795Y5WgiXrR9h4vnwA7rySgTeak7ak1w6UU=
+			Dle2NotkeUfcR0B+B7hadLMCaUriNOaSf5VqD5hGNL8=
 			</data>
 		</dict>
 		<key>Headers/BrainyRL.h</key>
@@ -53,14 +53,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aWVk+79/u+HyjpL/E/3be/SdVz1rr7CjJsb8DNyS1tY=
+			R1eHcJq/Z4/tVrNg1CBY92utccTYXxYTLzvCQUlyULw=
 			</data>
 		</dict>
 		<key>Modules/BrainyRL.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			67Grk1GQWLqm9uKUqmQ/5DeZjXYf+wpDuWLUy3JLyYw=
+			LfnsZ/MhdM1Etma0HTmFQBJQQMcX/7uvOA2FTWF72Vc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -55,7 +55,7 @@ public class Utils {
 
   // MARK: - PRIVATE METHODS
   private static func getActionIndex<T: Comparable>(table: [T]) -> Int{
-    let size: Int = table.capacity
+    let size: Int = table.count
     var index: Int = 0
     if size == 0 {
       return index
