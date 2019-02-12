@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RDRescue/GameScene.swift"
-            timestampString = "571642791.911014"
+            timestampString = "571645834.93057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "didSimulatePhysics()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.911397"
+            timestampString = "571645834.931289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.911446"
+            timestampString = "571645834.9315341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.911489"
+            timestampString = "571645834.931586"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "200"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.91153"
+            timestampString = "571645834.93163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.91158"
+            timestampString = "571645834.931671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.911618"
+            timestampString = "571645834.931715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.911653"
+            timestampString = "571645834.931752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.9116859"
+            timestampString = "571645834.931789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.911719"
+            timestampString = "571645834.931828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RDRescue/GameScene.swift"
-            timestampString = "571642791.911754"
+            timestampString = "571645834.931868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "setupObjects()"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RDRescue/GameScene.swift"
-            timestampString = "571642791.911992"
+            timestampString = "571645834.932176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "touchesBegan(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.912236"
+            timestampString = "571645834.93244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.91228"
+            timestampString = "571645834.9324909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RDRescue/GameScene.swift"
-            timestampString = "571642791.912321"
+            timestampString = "571645834.93253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "touchesMoved(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RDRescue/GameScene.swift"
-            timestampString = "571642791.912569"
+            timestampString = "571645834.932795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "update(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.91281"
+            timestampString = "571645834.933059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Algorithms/QLearning/QLearning.swift"
-            timestampString = "571642791.912853"
+            timestampString = "571645834.93311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
@@ -310,7 +310,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../BrainyRL/BrainyRL/Utils.swift"
@@ -321,6 +321,118 @@
             endingLineNumber = "67"
             landmarkName = "getActionIndex(table:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RDRescue/GameScene.swift"
+            timestampString = "571645834.93318"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
+            landmarkName = "whereToMove(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RDRescue/GameScene.swift"
+            timestampString = "571645834.9334199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "whereToMove(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RDRescue.GameScene.(whereToMove in _AF7F1C6940BE43F6A0D43579165E7709)(Swift.Int) -&gt; Swift.Int"
+                  moduleName = "RDRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardomontesinosfernandez/Brainy-RL/Examples/RDRescue-Finished/RDRescue/RDRescue/GameScene.swift"
+                  timestampString = "571645077.336014"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "343"
+                  endingLineNumber = "343"
+                  offsetFromSymbolStart = "1966">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; Swift.Bool in RDRescue.GameScene.(whereToMove in _AF7F1C6940BE43F6A0D43579165E7709)(Swift.Int) -&gt; Swift.Int"
+                  moduleName = "RDRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardomontesinosfernandez/Brainy-RL/Examples/RDRescue-Finished/RDRescue/RDRescue/GameScene.swift"
+                  timestampString = "571645077.3374701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "343"
+                  endingLineNumber = "343"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RDRescue/GameScene.swift"
+            timestampString = "571645834.93365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "whereToMove(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RDRescue.GameScene.(whereToMove in _AF7F1C6940BE43F6A0D43579165E7709)(Swift.Int) -&gt; Swift.Int"
+                  moduleName = "RDRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardomontesinosfernandez/Brainy-RL/Examples/RDRescue-Finished/RDRescue/RDRescue/GameScene.swift"
+                  timestampString = "571645077.3413661"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "343"
+                  endingLineNumber = "343"
+                  offsetFromSymbolStart = "1966">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; Swift.Bool in RDRescue.GameScene.(whereToMove in _AF7F1C6940BE43F6A0D43579165E7709)(Swift.Int) -&gt; Swift.Int"
+                  moduleName = "RDRescue"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardomontesinosfernandez/Brainy-RL/Examples/RDRescue-Finished/RDRescue/RDRescue/GameScene.swift"
+                  timestampString = "571645077.3428659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "343"
+                  endingLineNumber = "343"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

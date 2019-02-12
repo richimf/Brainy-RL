@@ -49,6 +49,7 @@ class GameScene: SKScene {
   var lastPosition: CGPoint = CGPoint.zero
   let terminal_state: Int = 600
   //let step: CGFloat = 100.0
+  var reward = 0
   
   var x_window: CGFloat = 0.0
   var y_window: CGFloat = 0.0
@@ -62,6 +63,7 @@ class GameScene: SKScene {
   
   let columns = 32
   let rows = 24
+  var lives = 30
   
   // ACTIONS SPACE
   let actions_space: [Int] = [Actions.stand.rawValue,
@@ -99,9 +101,6 @@ class GameScene: SKScene {
     physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
     maxSpeed = landMaxSpeed
     setupObjects()
-//    let playButton = Button(defaultButtonImage: "Think", activeButtonImage: "START", buttonAction: loadGameScene)
-//    playButton.position = CGPoint(x: 10, y: 10)
-//    addChild(playButton)
   }
 
   func loadSceneNodes() {
@@ -118,8 +117,7 @@ class GameScene: SKScene {
   }
 
   func setupObjects() {
-    let size = CGSize(width: 44, height: 44)
-    //self.QTable = Array(repeating: Array(repeating: 0, count: self.kColumns), count: self.kRows)
+    let size = CGSize(width: 60, height: 70)
 
     // 1
     guard let tileSet = SKTileSet(named: "Object Tiles") else {
@@ -221,15 +219,21 @@ class GameScene: SKScene {
     
     if let _ = objectTile?.userData?.value(forKey: "gascan") {
       run(rupeeSound)
+      reward = 1
+      lives = lives + 1
       objectsTileMap.setTileGroup(nil, forColumn: column, row: row)
     }
     
     if let _ = objectTile?.userData?.value(forKey: "duck") {
       run(hurtSound)
+      reward = -1
+      lives = lives - 1
       objectsTileMap.setTileGroup(nil, forColumn: column, row: row)
     }
     
-    try! brain.think()
+    if lives > 0 {
+      try! brain.think()
+    }
   }
   
   override func didSimulatePhysics() {
@@ -305,8 +309,9 @@ class GameScene: SKScene {
       }
       stateId = stateId + 1
       let point = CGPoint(x: x, y: y)
+      let currentposition = objectsTileMap.convert(point, from: agent)
       //let s: State = State(stateId: stateId, position: point)
-      states.append(point)
+      states.append(currentposition)
     } while(y < width)
     
   }
@@ -334,11 +339,15 @@ class GameScene: SKScene {
     } else {
       newPosition = position
     }
-    let action = SKAction.move(to: newPosition, duration: 0.1)
-    agent.run(action)
+    DispatchQueue.main.async {
+      let action = SKAction.move(to: newPosition, duration: 0.1)
+      self.agent.run(action)
+    }
     targetLocation = newPosition
-    
-    let filtered_states = states.indices.filter {states[$0] == newPosition}
+
+    let currentposition = objectsTileMap.convert(agent.position, from: agent)
+    print("currentposition = \(currentposition)")
+    let filtered_states = states.indices.filter {states[$0] == currentposition}
     if filtered_states.count > 0 {
       print("Next state \(filtered_states[0])")
       return filtered_states[0] //next state
@@ -353,13 +362,14 @@ class GameScene: SKScene {
     let column = landBackground.tileColumnIndex(fromPosition: position)
     let row = landBackground.tileRowIndex(fromPosition: position)
 
-    var reward: Int = 0
     let objectTile = objectsTileMap.tileDefinition(atColumn: column, row: row)
     if let _ = objectTile?.userData?.value(forKey: "duck") {
       reward = -1
+      lives = lives - 1
     }
     if let _ = objectTile?.userData?.value(forKey: "gascan") {
        reward = 1
+      lives = lives + 1
     }
     print("Reward \(reward)")
     return reward
