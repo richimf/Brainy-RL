@@ -43,15 +43,10 @@ open class Brainy: NSObject, BrainProtocol {
           brain.think()
         }
    */
-  open func think(steps: Int = 100, episodes: Int = 1000) throws {
+  open func think() throws {
     guard let env = self.environment else { throw RLError.noEnvironment }
     qLearning.initQTable(actions_space: env.action_space, states_number: env.numberOfStates)
-//    qLearning.train(steps: steps,
-//                    episodes: episodes,
-//                    terminalState: env.terminalState,
-//                    nextStateAndReward: env.nextStep)
-    qLearning.train(terminalState: env.terminalState,
-                    nextStateAndReward: env.nextStep)
+    qLearning.train(terminalState: env.terminalState, nextStateAndReward: env.nextStep)
   }
   
   open func updateQtable(row: Int, column: Int, value: Int) throws {

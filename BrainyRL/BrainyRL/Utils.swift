@@ -31,19 +31,46 @@ public class Utils {
     return getLastElementOf(table: map)
   }
 
-  public class func argmax<T: Comparable>(table: [[T]], row: T) -> T? {
+  /**
+   Get max value index of a given row number in an table
+   
+  - Parameters:
+       - row: row position number
+       - table: A two dimensional matrix. Its elements should be of the same kind.
+
+   # How to use:
+        let m = [[77,2,3],[4,5,6]]
+   getActionIndex(table: m, row: 1)
+   */
+  public class func getActionIndex<T: Comparable>(table: [[T]], row: Int) -> Int{
     var map: [T] = [T]()
-    let row: Int = row as! Int
-    if row < table.count {
-      let columns = table[row].count
+    if row >= 0 && row < table.count {
+      let columns = table[row].count // an array of columns
       for c in 0..<columns {
         map.append(table[row][c])
       }
     }
-    return getLastElementOf(table: map)
+    return getActionIndex(table: map)
   }
 
   // MARK: - PRIVATE METHODS
+  private static func getActionIndex<T: Comparable>(table: [T]) -> Int{
+    let size: Int = table.capacity
+    var index: Int = 0
+    if size == 0 {
+      return index
+    }
+    for i in 0..<size {
+      if i == size-1 {
+        return index
+      }
+      if table[index] < table[i] {
+        index = i
+      }
+    }
+    return index
+  }
+
   private static func getLastElementOf<T: Comparable>(table: [T]) -> T?{
     let tableSorted = quicksort(table)
     if tableSorted.isEmpty {

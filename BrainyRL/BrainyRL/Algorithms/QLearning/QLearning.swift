@@ -38,70 +38,90 @@ open class QLearning {
   public var actions = [Int]() //this
   private let defaultAction: Int = 0
   private var observation: Int = 0
+  public var isDone: Bool = false
 
   /// We have to define when to stop training or if it is undefined amount of time.
   /// We will choose an action (a) in the state (s) based on the Q-Table.
-  public func train(steps: Int, episodes: Int, terminalState: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
-    for _ in 0...episodes {
+//  public func train(steps: Int, episodes: Int, terminalState: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
+//    for _ in 0...episodes {
+//
+//      var observation = 0 //Observation
+//
+//      for _ in 0...steps {
+//        //Choose an action a in the current world state (s)
+//        let action = chooseAction(state: observation)
+//        let (next_state, reward, done) = try! nextStateAndReward(action)
+//
+//        //LEARN
+//        //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
+//        try! updateQtable(row: action, column: observation, value: next_state)
+//        let q_predict: Float = try! Float(Q(observation, action)) // QSA
+//        let R = Float(reward)
+//        var q_target: Float = 0.0
+//
+//        if next_state != terminalState {
+//          //q_target = r + gamma*max_a[Q(S',a)]
+//          //q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
+//          q_target = R + discount_rate * getArgmax(state: next_state)
+//
+//        } else {
+//          q_target = R
+//          // Q(S,A) <- Q(S,A) + alfa[r + gamma*max_aQ(S',a) - Q(S,A)]
+//          // Q(S,A) <- Q(S,A) + alfa[q_target - Q(S,A)]  # alfa is the learning rate: "self.lr"
+//          // Q(S,A) <- Q(S,A) + self.lr * (q_target - q_predict)
+//        }
+//        let _QSA: Float = alpha*(q_target - q_predict)
+//        let newValue = q_predict + learning_rate * _QSA
+//        try? updateQtable(row: observation, column: action, value: Int(newValue))
+//
+//        //update current state
+//        if next_state < self.kRows {
+//          observation = next_state
+//        }
+//        if done {
+//          break
+//        }
+//      }
+//    }
+//  }
 
-      var observation = 0 //Observation
+  //EXPERIMENTAL
+  public func train(terminalState: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
 
-      for _ in 0...steps {
-        //Choose an action a in the current world state (s)
-        let action = chooseAction(state: observation)
-        let (next_state, reward, done) = try! nextStateAndReward(action)
-
-        //LEARN
-        //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
-        try! updateQtable(row: action, column: observation, value: next_state)
-        let q_predict: Float = try! Float(Q(observation, action)) // QSA
-        let R = Float(reward)
-        var q_target: Float = 0.0
-
-        if next_state != terminalState {
-          //q_target = r + gamma*max_a[Q(S',a)]
-          //q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
-          q_target = R + discount_rate * getArgmaxwithDiscount(state: next_state)
-
-        } else {
-          q_target = R
-          // Q(S,A) <- Q(S,A) + alfa[r + gamma*max_aQ(S',a) - Q(S,A)]
-          // Q(S,A) <- Q(S,A) + alfa[q_target - Q(S,A)]  # alfa is the learning rate: "self.lr"
-          // Q(S,A) <- Q(S,A) + self.lr * (q_target - q_predict)
-        }
-        let _QSA: Float = alpha*(q_target - q_predict)
-        let newValue = q_predict + learning_rate * _QSA
-        try? updateQtable(row: observation, column: action, value: Int(newValue))
-
-        //update current state
-        if next_state < self.kRows {
-          observation = next_state
-        }
-        if done {
-          break
-        }
+    if isDone == false {
+      
+      //Choose an action a in the current world state (s)
+      let action = chooseAction(state: observation)
+      
+      //Environment step, game do this nextStateAndReward
+      let (next_state, reward, done) = try! nextStateAndReward(action)
+      
+      //Notify isDone
+      isDone = done
+      
+      //LEARN
+      learn(state: observation,
+            action: action,
+            next_state: next_state,
+            reward: reward,
+            terminalState: terminalState) //TODO: SET TERMINAL STATE
+      
+      //update current state
+      if next_state < self.kRows {
+        observation = next_state
       }
     }
   }
 
-  //EXPERIMENTAL
-  public func train(terminalState: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
-    //Choose an action a in the current world state (s)
-    let action = chooseAction(state: observation)
-    let (next_state, reward, done) = try! nextStateAndReward(action)
-    
-    //LEARN
+  private func learn(state: Int, action: Int, next_state: Int, reward: Int, terminalState: Int) {
     //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
-    try! updateQtable(row: action, column: observation, value: next_state)
-    let q_predict: Float = try! Float(Q(observation, action)) // QSA
+    let q_predict: Float = try! Float(Q(state, action)) // QSA
     let R = Float(reward)
     var q_target: Float = 0.0
-    
     if next_state != terminalState {
       //q_target = r + gamma*max_a[Q(S',a)]
       //q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
-      q_target = R + discount_rate * getArgmaxwithDiscount(state: next_state)
-      
+      q_target = R + discount_rate * getArgmax(state: next_state)
     } else {
       q_target = R
       // Q(S,A) <- Q(S,A) + alfa[r + gamma*max_aQ(S',a) - Q(S,A)]
@@ -110,15 +130,8 @@ open class QLearning {
     }
     let _QSA: Float = alpha*(q_target - q_predict)
     let newValue = q_predict + learning_rate * _QSA
-    try? updateQtable(row: observation, column: action, value: Int(newValue))
-    
-    //update current state
-    if next_state < self.kRows {
-      observation = next_state
-    }
-    //TODO: MISSING IS DONE CONDITION
+    try? updateQtable(row: state, column: action, value: Int(newValue))
   }
-  
   
   /// Q-function returns the expected future reward of that action at that state.
   public func Q(_ s: Int, _ a: Int) throws -> Qvalue {
@@ -129,33 +142,29 @@ open class QLearning {
     }
   }
 
-  //MARK: - Strategy
+  //MARK: - CHOOSE ACTION
   /// Epsilon Greedy is the strategy to follow in two flavors: Exploitation and Exploration
   public func chooseAction(state: Int) -> Action {
-    var action: Int = 1
+    var action: Action = 1 //DEFAULT VALUE
     let randomNumber: Float = Float(Float(arc4random()) / Float(UINT32_MAX))
     if randomNumber < epsilon {
-      //EXPLOITATION, this means we use what we already know to select the best action at each step
-      if let _action = Utils.argmax(table: QTable, row: state) {
-        action = _action
-      } else {
-        let randomNumber = Int(arc4random_uniform(4))
-        action = actions[randomNumber] // TODO: 0 should be a random number
-      }
+      //CHOOSE BEST ACTION
+      action = Utils.getActionIndex(table: QTable, row: state)
     } else {
-      //EXPLORATION
-      let randomNumber = Int(arc4random_uniform(4))
-      action = actions[randomNumber] // TODO: 0 should be a random number
-      //Reduce epsilon
-      if epsilon > min_epsilon {
-        epsilon = epsilon - decay_rate
-      }
+      //CHOOSE RANDOM ACTION
+      let randomNumber = Int(arc4random_uniform(UInt32(self.kColumns))) //kColumns is number of actions
+      action = actions[randomNumber]
+    }
+    //Reduce epsilon
+    if epsilon > min_epsilon {
+      epsilon = epsilon - decay_rate
     }
     return action
   }
 
-  private func getArgmaxwithDiscount(state: Int) -> Float {
-    return discount_rate * Float(Utils.argmax(table: self.QTable, row: state) ?? defaultAction)
+  //This returns an
+  private func getArgmax(state: Int) -> Float {
+    return Float(Utils.getActionIndex(table: self.QTable, row: state))
   }
 
 }
@@ -178,12 +187,7 @@ extension QLearning: QtableProtocol {
   public func updateQtable(row: Int, column: Int, value: Int) throws {
     if self.QTable.capacity > 0 {
       if column >= 0 && column < self.kColumns && row >= 0 && row < self.kRows {
-        print("row \(row)")
-        print("columns \(column) ")
-        print("vallue \(value)")
         self.QTable[row][column] = value
-      } else {
-        //throw RLError.outofIndex
       }
     } else {
       throw RLError.qtableNotInitialized
