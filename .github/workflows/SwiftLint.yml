@@ -1,7 +1,7 @@
 name: test_action
 
 on:
-  push:
+  pull_request:
     branches: [develop]
 # env:
 #   DEVELOPER_DIR: /Applications/Xcode_11_3_1.app/Contents/Developer
