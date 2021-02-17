@@ -1,15 +1,23 @@
-name: Danger
+name: test_action
+
 on:
-  pull_request:
-    paths:
-      - '.swiftlint.yml'
-      - '**/*.swift'
+  push:
+    branches: [develop]
+env:
+  DEVELOPER_DIR: /Applications/Xcode_11_3_1.app/Contents/Developer
+  GITHUB_TOKEN: ${{ secrets.PAT }}
+
 jobs:
-  Danger:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: macos-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Danger
-        uses: 417-72KI/danger-swiftlint@v3.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
+
+    - uses: arthurpalves/coherent-swift@0.5.5
+      with:
+        source: Sources/
+        minimum_threshold: 60
+        ignore_output_result: true
+        only_changes: true
+        report_format: plain
