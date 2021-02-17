@@ -10,32 +10,32 @@ import Foundation
 
 open class QLearning {
 
-  //MARK: - TypeAlias
+  // MARK: - TypeAlias
   public typealias Qvalue = Int
   public typealias Action = Int
   public typealias NextStateAndReward = (next_state: Int, reward: Int, done: Bool)
 
-  //MARK: - Parameters
-  private var kRows: Int = 0    //states
-  private var kColumns: Int = 0 //actions
+  // MARK: - Parameters
+  private var kRows: Int = 0    // states
+  private var kColumns: Int = 0 // actions
 
   /// Learning Rate: alpha
   private var alpha: Float = 0.1
   
   /// Discount Rate: gamma
-  private var discount_rate: Float = 0.01 //this
-  private var learning_rate: Float = 0.7 //this
+  private var discount_rate: Float = 0.01 // this
+  private var learning_rate: Float = 0.7 // this
 
   /// Epsilon
-  private var epsilon: Float = 0.5 //this
+  private var epsilon: Float = 0.5 // this
   private let max_epsilon: Float = 1.0
   private let min_epsilon: Float = 0.01
   private let decay_rate: Float = 0.01
 
-  //MARK: - Q-Table
+  // MARK: - Q-Table
   /// The *Q-Table* helps us to find the best action for each state.
-  public var QTable = [[Int]]() //this
-  public var actions = [Int]() //this
+  public var QTable = [[Int]]() // this
+  public var actions = [Int]() // this
   private let defaultAction: Int = 0
   private var observation: Int = 0
   public var isDone: Bool = false
@@ -85,28 +85,28 @@ open class QLearning {
 //    }
 //  }
 
-  //EXPERIMENTAL
+  // EXPERIMENTAL
   public func train(terminalState: Int, nextStateAndReward: (_ action: Int) throws -> NextStateAndReward) {
 
     if isDone == false {
       
-      //Choose an action a in the current world state (s)
+      // Choose an action a in the current world state (s)
       let action = chooseAction(state: observation)
       
-      //Environment step, game do this nextStateAndReward
+      // Environment step, game do this nextStateAndReward
       let (next_state, reward, done) = try! nextStateAndReward(action)
       
-      //Notify isDone
+      // Notify isDone
       isDone = done
       
-      //LEARN
+      // LEARN
       learn(state: observation,
             action: action,
             next_state: next_state,
             reward: reward,
-            terminalState: terminalState) //TODO: SET TERMINAL STATE
+            terminalState: terminalState) // TODO: SET TERMINAL STATE
       
-      //update current state
+      // update current state
       if next_state < self.kRows {
         observation = next_state
       }
@@ -114,13 +114,13 @@ open class QLearning {
   }
 
   private func learn(state: Int, action: Int, next_state: Int, reward: Int, terminalState: Int) {
-    //Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
+    // Update Q(s,a) = Q(s,a) + lr [R(s,a) + gamma * maxQ(s',a') - Q(s,a)]
     let q_predict: Float = try! Float(Q(state, action)) // QSA
     let R = Float(reward)
     var q_target: Float = 0.0
     if next_state != terminalState {
-      //q_target = r + gamma*max_a[Q(S',a)]
-      //q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
+      // q_target = r + gamma*max_a[Q(S',a)]
+      // q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
       q_target = R + discount_rate * getArgmax(state: next_state)
     } else {
       q_target = R
@@ -142,27 +142,27 @@ open class QLearning {
     }
   }
 
-  //MARK: - CHOOSE ACTION
+  // MARK: - CHOOSE ACTION
   /// Epsilon Greedy is the strategy to follow in two flavors: Exploitation and Exploration
   public func chooseAction(state: Int) -> Action {
-    var action: Action = 1 //DEFAULT VALUE
+    var action: Action = 1 // DEFAULT VALUE
     let randomNumber: Float = Float(Float(arc4random()) / Float(UINT32_MAX))
     if randomNumber < epsilon {
-      //CHOOSE BEST ACTION
+      // CHOOSE BEST ACTION
       action = Utils.getActionIndex(table: QTable, row: state)
     } else {
-      //CHOOSE RANDOM ACTION
-      let randomNumber = Int(arc4random_uniform(UInt32(self.kColumns))) //kColumns is number of actions
+      // CHOOSE RANDOM ACTION
+      let randomNumber = Int(arc4random_uniform(UInt32(self.kColumns))) // kColumns is number of actions
       action = actions[randomNumber]
     }
-    //Reduce epsilon
+    // Reduce epsilon
     if epsilon > min_epsilon {
-      epsilon = epsilon - decay_rate
+      epsilon -= decay_rate
     }
     return action
   }
 
-  //This returns an
+  // This returns an
   private func getArgmax(state: Int) -> Float {
     return Float(Utils.getActionIndex(table: self.QTable, row: state))
   }
@@ -220,4 +220,3 @@ extension QLearning: SettersProtocol {
     self.epsilon = value
   }
 }
-
