@@ -1,23 +1,28 @@
-name: test_action
+name: SwiftLint
 
 on:
   pull_request:
-    branches: [develop]
-# env:
-#   DEVELOPER_DIR: /Applications/Xcode_11_3_1.app/Contents/Developer
-#   GITHUB_TOKEN: ${{ secrets.PAT }}
+    paths:
+      - '.github/workflows/swiftlint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
 
 jobs:
-  build:
-    runs-on: macos-latest
-
+  SwiftLint:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - uses: arthurpalves/coherent-swift@0.5.5
-      with:
-        source: Sources/
-        minimum_threshold: 60
-        ignore_output_result: true
-        only_changes: true
-        report_format: plain
+      - uses: actions/checkout@v1
+      - name: GitHub Action for SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+      - name: GitHub Action for SwiftLint with --strict
+        uses: norio-nomura/action-swiftlint@3.2.1
+        with:
+          args: --strict
+      - name: GitHub Action for SwiftLint (Only files changed in the PR)
+        uses: norio-nomura/action-swiftlint@3.2.1
+        env:
+          DIFF_BASE: ${{ github.base_ref }}
+      - name: GitHub Action for SwiftLint (Different working directory)
+        uses: norio-nomura/action-swiftlint@3.2.1
+        env:
+          WORKING_DIRECTORY: Source
