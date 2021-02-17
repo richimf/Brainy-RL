@@ -8,11 +8,15 @@ disabled_rules:
 
 included: # paths to include during linting. `--path` is ignored if present.
   - BrainyRL
-  - Examples
 
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
+  - Examples
+  - BrainyRLTests
+
+disabled_rules: 
+   - force_try
 
 nesting:
   type_level: 3
