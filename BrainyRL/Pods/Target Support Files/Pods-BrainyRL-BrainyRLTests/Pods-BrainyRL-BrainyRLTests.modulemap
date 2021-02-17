@@ -1,0 +1,6 @@
+framework module Pods_BrainyRL_BrainyRLTests {
+  umbrella header "Pods-BrainyRL-BrainyRLTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099451421B871723A5FDBDB8 /* Pods_BrainyRL_BrainyRLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05EB7486417C121C2DBE092C /* Pods_BrainyRL_BrainyRLTests.framework */; };
 		468773DD21A61B5300E52966 /* BrainyRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468773D321A61B5300E52966 /* BrainyRL.framework */; };
 		468773E221A61B5300E52966 /* BrainyRLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468773E121A61B5300E52966 /* BrainyRLTests.swift */; };
 		468773E421A61B5300E52966 /* BrainyRL.h in Headers */ = {isa = PBXBuildFile; fileRef = 468773D621A61B5300E52966 /* BrainyRL.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +20,7 @@
 		89A3D3CE22127AE100C474F3 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A3D3CD22127AE100C474F3 /* State.swift */; };
 		89C7BB4F220BF7CC00037592 /* BrainyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB4E220BF7CC00037592 /* BrainyEnvironment.swift */; };
 		89C7BB51220C0B7000037592 /* BrainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7BB50220C0B7000037592 /* BrainProtocol.swift */; };
+		8A4E370EE49B729A494ECDFD /* Pods_BrainyRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BE50B35C01FC93B6655636 /* Pods_BrainyRL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00C27836673D2B361C934654 /* Pods-BrainyRL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainyRL.debug.xcconfig"; path = "Target Support Files/Pods-BrainyRL/Pods-BrainyRL.debug.xcconfig"; sourceTree = "<group>"; };
+		05EB7486417C121C2DBE092C /* Pods_BrainyRL_BrainyRLTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrainyRL_BrainyRLTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468773D321A61B5300E52966 /* BrainyRL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BrainyRL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468773D621A61B5300E52966 /* BrainyRL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrainyRL.h; sourceTree = "<group>"; };
 		468773D721A61B5300E52966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,9 +48,13 @@
 		46F3DE1521B7023C00C19A04 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		46F3DE1821B71DDE00C19A04 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		46F3DE1B21B72E3200C19A04 /* QLearningProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLearningProtocols.swift; sourceTree = "<group>"; };
+		7E911F0498C7FDB88DB2D17E /* Pods-BrainyRL-BrainyRLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainyRL-BrainyRLTests.release.xcconfig"; path = "Target Support Files/Pods-BrainyRL-BrainyRLTests/Pods-BrainyRL-BrainyRLTests.release.xcconfig"; sourceTree = "<group>"; };
+		810A103CEF2ACCD0C02A0FE1 /* Pods-BrainyRL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainyRL.release.xcconfig"; path = "Target Support Files/Pods-BrainyRL/Pods-BrainyRL.release.xcconfig"; sourceTree = "<group>"; };
 		89A3D3CD22127AE100C474F3 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		89C7BB4E220BF7CC00037592 /* BrainyEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainyEnvironment.swift; sourceTree = "<group>"; };
 		89C7BB50220C0B7000037592 /* BrainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainProtocol.swift; sourceTree = "<group>"; };
+		ED063650EA369F0CD328685B /* Pods-BrainyRL-BrainyRLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainyRL-BrainyRLTests.debug.xcconfig"; path = "Target Support Files/Pods-BrainyRL-BrainyRLTests/Pods-BrainyRL-BrainyRLTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F3BE50B35C01FC93B6655636 /* Pods_BrainyRL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrainyRL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A4E370EE49B729A494ECDFD /* Pods_BrainyRL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,18 +71,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				468773DD21A61B5300E52966 /* BrainyRL.framework in Frameworks */,
+				099451421B871723A5FDBDB8 /* Pods_BrainyRL_BrainyRLTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4E59714279B4E4C055158B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				00C27836673D2B361C934654 /* Pods-BrainyRL.debug.xcconfig */,
+				810A103CEF2ACCD0C02A0FE1 /* Pods-BrainyRL.release.xcconfig */,
+				ED063650EA369F0CD328685B /* Pods-BrainyRL-BrainyRLTests.debug.xcconfig */,
+				7E911F0498C7FDB88DB2D17E /* Pods-BrainyRL-BrainyRLTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		468773C921A61B5300E52966 = {
 			isa = PBXGroup;
 			children = (
 				468773D521A61B5300E52966 /* BrainyRL */,
 				468773E021A61B5300E52966 /* BrainyRLTests */,
 				468773D421A61B5300E52966 /* Products */,
+				3B4E59714279B4E4C055158B /* Pods */,
+				E6540D8E6EF1F35FFAF7627D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +192,15 @@
 			name = Brain;
 			sourceTree = "<group>";
 		};
+		E6540D8E6EF1F35FFAF7627D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3BE50B35C01FC93B6655636 /* Pods_BrainyRL.framework */,
+				05EB7486417C121C2DBE092C /* Pods_BrainyRL_BrainyRLTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -187,10 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 468773E721A61B5300E52966 /* Build configuration list for PBXNativeTarget "BrainyRL" */;
 			buildPhases = (
+				785C9A9115DEC7FE6373F3F6 /* [CP] Check Pods Manifest.lock */,
 				468773CE21A61B5300E52966 /* Sources */,
 				468773CF21A61B5300E52966 /* Frameworks */,
 				468773D021A61B5300E52966 /* Headers */,
 				468773D121A61B5300E52966 /* Resources */,
+				466D0E3825DDDC5300BC8650 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -205,6 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 468773EA21A61B5300E52966 /* Build configuration list for PBXNativeTarget "BrainyRLTests" */;
 			buildPhases = (
+				7A45CCCA625A17D6124D15A6 /* [CP] Check Pods Manifest.lock */,
 				468773D821A61B5300E52966 /* Sources */,
 				468773D921A61B5300E52966 /* Frameworks */,
 				468773DA21A61B5300E52966 /* Resources */,
@@ -273,6 +308,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		466D0E3825DDDC5300BC8650 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		785C9A9115DEC7FE6373F3F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BrainyRL-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A45CCCA625A17D6124D15A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BrainyRL-BrainyRLTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		468773CE21A61B5300E52966 /* Sources */ = {
@@ -431,6 +530,7 @@
 		};
 		468773E821A61B5300E52966 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00C27836673D2B361C934654 /* Pods-BrainyRL.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -458,6 +558,7 @@
 		};
 		468773E921A61B5300E52966 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 810A103CEF2ACCD0C02A0FE1 /* Pods-BrainyRL.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -484,6 +585,7 @@
 		};
 		468773EB21A61B5300E52966 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED063650EA369F0CD328685B /* Pods-BrainyRL-BrainyRLTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -502,6 +604,7 @@
 		};
 		468773EC21A61B5300E52966 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E911F0498C7FDB88DB2D17E /* Pods-BrainyRL-BrainyRLTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

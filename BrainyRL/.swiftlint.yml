@@ -1,0 +1,47 @@
+disabled_rules:
+  - line_length
+  - identifier_name
+  - void_return
+  - cyclomatic_complexity
+  - multiple_closures_with_trailing_closure
+  - todo
+  - force_try
+  - trailing_whitespace
+  - force_cast
+  - force_unwrapping
+
+included: # paths to include during linting. `--path` is ignored if present.
+  - BrainyRL
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - Examples
+  - BrainyRLTests
+
+nesting:
+  type_level: 3
+
+function_parameter_count:
+  warning: 6
+  error: 10
+
+large_tuple: # warn user when using 3 values in tuple, give error if there are 4
+   - 4
+   - 5
+
+type_name:
+    min_length: 2
+    max_length: 40
+
+type_body_length:
+  - 1000 # warning
+  - 4000 # error
+
+file_length:
+  - 1000 # warning
+  - 4000 # error
+
+function_body_length:
+  - 500 # warning
+  - 4000 # error 
