@@ -21,16 +21,16 @@ open class QLearning {
 
   /// Learning Rate: alpha
   private var alpha: Float = 0.1
-  
+
   /// Discount Rate: gamma
-  private var discount_rate: Float = 0.01 // this
-  private var learning_rate: Float = 0.7 // this
+  private var discountRate: Float = 0.01 // this
+  private var learningRate: Float = 0.7 // this
 
   /// Epsilon
   private var epsilon: Float = 0.5 // this
-  private let max_epsilon: Float = 1.0
-  private let min_epsilon: Float = 0.01
-  private let decay_rate: Float = 0.01
+  private let maxEpsilon: Float = 1.0
+  private let minEpsilon: Float = 0.01
+  private let decayRate: Float = 0.01
 
   // MARK: - Q-Table
   /// The *Q-Table* helps us to find the best action for each state.
@@ -121,7 +121,7 @@ open class QLearning {
     if next_state != terminalState {
       // q_target = r + gamma*max_a[Q(S',a)]
       // q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
-      q_target = R + discount_rate * getArgmax(state: next_state)
+      q_target = R + discountRate * getArgmax(state: next_state)
     } else {
       q_target = R
       // Q(S,A) <- Q(S,A) + alfa[r + gamma*max_aQ(S',a) - Q(S,A)]
@@ -129,10 +129,10 @@ open class QLearning {
       // Q(S,A) <- Q(S,A) + self.lr * (q_target - q_predict)
     }
     let _QSA: Float = alpha*(q_target - q_predict)
-    let newValue = q_predict + learning_rate * _QSA
+    let newValue = q_predict + learningRate * _QSA
     try? updateQtable(row: state, column: action, value: Int(newValue))
   }
-  
+
   /// Q-function returns the expected future reward of that action at that state.
   public func Q(_ s: Int, _ a: Int) throws -> Qvalue {
     if s < self.kRows && a < self.kColumns {
@@ -156,8 +156,8 @@ open class QLearning {
       action = actions[randomNumber]
     }
     // Reduce epsilon
-    if epsilon > min_epsilon {
-      epsilon -= decay_rate
+    if epsilon > minEpsilon {
+      epsilon -= decayRate
     }
     return action
   }
@@ -171,12 +171,12 @@ open class QLearning {
 
 // MARK: - Q-Table
 extension QLearning: QtableProtocol {
- 
+
   /// Actions Space **actions_space** and **states_number** are provided by the **Environment**.
-  public func initQTable(actions_space: [Int], states_number: Int) {
-    self.kColumns = actions_space.count
-    self.actions = actions_space
-    self.kRows = states_number
+  public func initQTable(actionsSpace: [Int], statesNumber: Int) {
+    self.kColumns = actionsSpace.count
+    self.actions = actionsSpace
+    self.kRows = statesNumber
     self.QTable = Array(repeating: Array(repeating: 0, count: self.kColumns), count: self.kRows)
   }
 
@@ -209,7 +209,7 @@ extension QLearning: QtableProtocol {
 // MARK: - Setters
 extension QLearning: SettersProtocol {
   public func setDiscountRate(_ value: Float) {
-    self.discount_rate = value
+    self.discountRate = value
   }
   
   public func setAlpha(_ value: Float) {
