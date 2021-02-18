@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - '.github/workflows/SwiftLint.yml'
-      - '.swiftlint_pr.yml'
-      # - './BrainyRL/swiftlint.yml'
+      #- '.swiftlint_pr.yml'
+      - './BrainyRL/swiftlint.yml'
       - '**/*.swift'
 
 jobs:
