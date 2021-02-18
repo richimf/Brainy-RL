@@ -35,7 +35,6 @@ open class BrainyEnvironment {
   public func setupFuctions(whereToMove: @escaping (_ action: Int) -> Int,
                             getReward:  @escaping (_ state: Int) -> Int,
                             isTerminalState:  @escaping (_ state: Int) -> Bool) throws {
-    _ = whereToMove!
     guard let _whereToMove = whereToMove as? WhereToMove,
       let _getReward = getReward as? GetReward,
       let _isTerminalState = isTerminalState as? IsTerminalState else {
