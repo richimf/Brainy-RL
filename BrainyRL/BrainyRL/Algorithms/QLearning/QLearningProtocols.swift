@@ -20,9 +20,9 @@ public protocol QtableProtocol {
   /** Once Q-Table is initialized, it is filled with Zeros.
    There are **n** columns, where **n =** number of actions.
    There are **m** rows, where **m =** number of states. */
-  //func initQTable()
+  // func initQTable()
   func initQTable(actions_space: [Int], states_number: Int)
-  //func initQTable(actions_space: Int, states_number: Int)
+  // func initQTable(actions_space: Int, states_number: Int)
   /// Clear the Q-Table
   func clearQtable()
   /// Set a value at given position into Q-Table

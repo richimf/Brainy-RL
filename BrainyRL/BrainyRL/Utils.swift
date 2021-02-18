@@ -9,7 +9,7 @@
 import Foundation
 
 public class Utils {
- 
+
   /**
    Get max value of a 2D-Matrix
   - Parameters:
@@ -42,7 +42,7 @@ public class Utils {
         let m = [[77,2,3],[4,5,6]]
    getActionIndex(table: m, row: 1)
    */
-  public class func getActionIndex<T: Comparable>(table: [[T]], row: Int) -> Int{
+  public class func getActionIndex<T: Comparable>(table: [[T]], row: Int) -> Int {
     var map: [T] = [T]()
     if row >= 0 && row < table.count {
       let columns = table[row].count // an array of columns
@@ -54,7 +54,7 @@ public class Utils {
   }
 
   // MARK: - PRIVATE METHODS
-  private static func getActionIndex<T: Comparable>(table: [T]) -> Int{
+  private static func getActionIndex<T: Comparable>(table: [T]) -> Int {
     let size: Int = table.count
     var index: Int = 0
     if size == 0 {
@@ -71,7 +71,7 @@ public class Utils {
     return index
   }
 
-  private static func getLastElementOf<T: Comparable>(table: [T]) -> T?{
+  private static func getLastElementOf<T: Comparable>(table: [T]) -> T? {
     let tableSorted = quicksort(table)
     if tableSorted.isEmpty {
       return nil
