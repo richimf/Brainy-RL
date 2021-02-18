@@ -21,11 +21,11 @@ public class Utils {
   */
   public class func argmax<T: Comparable>(table: [[T]]) -> T? {
     var map: [T] = [T]()
-    let row = table.capacity
-    for r in 0..<row {
-      let columns = table[r].count
-      for c in 0..<columns {
-        map.append(table[r][c])
+    let tableCapacityRows = table.capacity
+    for tableRow in 0..<tableCapacityRows {
+      let columns = table[tableRow].count
+      for column in 0..<columns {
+        map.append(table[tableRow][column])
       }
     }
     return getLastElementOf(table: map)
@@ -46,8 +46,8 @@ public class Utils {
     var map: [T] = [T]()
     if row >= 0 && row < table.count {
       let columns = table[row].count // an array of columns
-      for c in 0..<columns {
-        map.append(table[row][c])
+      for column in 0..<columns {
+        map.append(table[row][column])
       }
     }
     return getActionIndex(table: map)
@@ -56,19 +56,19 @@ public class Utils {
   // MARK: - PRIVATE METHODS
   private static func getActionIndex<T: Comparable>(table: [T]) -> Int {
     let size: Int = table.count
-    var index: Int = 0
+    var actionIndex: Int = 0
     if size == 0 {
-      return index
+      return actionIndex
     }
-    for i in 0..<size {
-      if i == size-1 {
-        return index
+    for index in 0..<size {
+      if index == size-1 {
+        return actionIndex
       }
-      if table[index] < table[i] {
-        index = i
+      if table[actionIndex] < table[index] {
+        actionIndex = index
       }
     }
-    return index
+    return actionIndex
   }
 
   private static func getLastElementOf<T: Comparable>(table: [T]) -> T? {
@@ -80,12 +80,12 @@ public class Utils {
     return tableSorted[lastIndex]
   }
 
-  private static func quicksort<T: Comparable>(_ a: [T]) -> [T] {
-    guard a.count > 1 else { return a }
-    let pivot = a[a.count/2]
-    let less = a.filter { $0 < pivot }
-    let equal = a.filter { $0 == pivot }
-    let greater = a.filter { $0 > pivot }
+  private static func quicksort<T: Comparable>(_ value: [T]) -> [T] {
+    guard value.count > 1 else { return value }
+    let pivot = value[value.count/2]
+    let less = value.filter { $0 < pivot }
+    let equal = value.filter { $0 == pivot }
+    let greater = value.filter { $0 > pivot }
     return quicksort(less) + equal + quicksort(greater)
   }
 }
