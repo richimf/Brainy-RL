@@ -43,7 +43,7 @@ open class Brainy: NSObject, BrainProtocol {
           brain.think()
         }
    */
-  open funcc think() throws {
+  open func think() throws {
     guard let env = self.environment else { throw RLError.noEnvironment }
     qLearning.initQTable(actions_space: env.action_space, states_number: env.numberOfStates)
     qLearning.train(terminalState: env.terminalState, nextStateAndReward: env.nextStep)

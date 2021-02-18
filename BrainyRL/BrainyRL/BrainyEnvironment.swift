@@ -16,7 +16,7 @@ open class BrainyEnvironment {
   public var action_space = [Int]()
   public var terminalState: Int = 0
 
-  //Functions given by the Agent
+  // Functions given by the Agent
   public var whereToMove: Any = ()
   public var getReward: Any = ()
   public var isTerminalState: Any = ()
@@ -36,7 +36,7 @@ open class BrainyEnvironment {
                             getReward:  @escaping (_ state: Int) -> Int,
                             isTerminalState:  @escaping (_ state: Int) -> Bool) throws {
     guard let _whereToMove = whereToMove as? WhereToMove,
-      let _getReward = getReward as? GetReward,
+      let _getReward = getReward as! GetReward,
       let _isTerminalState = isTerminalState as? IsTerminalState else {
         throw RLError.functionsNotInitialized
     }
